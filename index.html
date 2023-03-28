@@ -1887,50 +1887,96 @@
             display: block;
             background-color: #191b28;
         }
+        .dropdown-item{
+            color: white;
+        }
+        .btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {
+            color: var(--bs-btn-active-color);
+            background-color: #191b28;
+            border-color: #ffffff;
+        }
     </style>
 </head>
 
 <body>
     <div>
-        <header class="MuiBox-root css-pkijvr"><a
-                class="MuiTypography-root MuiTypography-description MuiLink-root MuiLink-underlineNone MuiBox-root active css-1abeg8a"
-                aria-label="Go to homepage" href="index.html"><img src="unitycore.png" alt="Unitycore" width="10%"
-                    height="50%" /></a>
-            <div class="MuiBox-root css-5hicrt"></div>
-            <div class="MuiBox-root css-1me2gch">
-                <ul class="MuiList-root css-1dvha5n">
-                    <li class="MuiListItem-root MuiListItem-gutters css-sfox7e" data-cy="menuDashboard"><a
-                            class="MuiTypography-root MuiTypography-description MuiLink-root MuiLink-underlineNone MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-disableElevation MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-disableElevation active css-a6b3rd"
-                            tabindex="0" href="index.html">Dashboard</a></li>
-                    <li class="MuiListItem-root MuiListItem-gutters css-sfox7e" data-cy="menuMarkets"><a
-                            class="MuiTypography-root MuiTypography-description MuiLink-root MuiLink-underlineNone MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-disableElevation MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-disableElevation css-a6b3rd"
-                            tabindex="0" href="markets/index.html">Markets</a></li>
-                    <li class="MuiListItem-root MuiListItem-gutters css-sfox7e" data-cy="menuStake"><a
-                            class="MuiTypography-root MuiTypography-description MuiLink-root MuiLink-underlineNone MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-disableElevation MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-disableElevation css-a6b3rd"
-                            tabindex="0" href="staking/index.html">Stake</a></li>
-                    <li class="MuiListItem-root MuiListItem-gutters css-sfox7e" data-cy="menuGovernance"><a
-                            class="MuiTypography-root MuiTypography-description MuiLink-root MuiLink-underlineNone MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-disableElevation MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-disableElevation css-a6b3rd"
-                            tabindex="0" href="governance/index.html">Governance</a></li>
-                    <li class="MuiListItem-root MuiListItem-gutters css-1lg82l4"><button
-                            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-disableElevation MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-disableElevation css-1ogtsao"
-                            tabindex="0" type="button" aria-label="more" id="more-button" aria-haspopup="true">More<svg
-                                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-y0zxrm" focusable="false"
-                                aria-hidden="true" viewBox="0 0 24 24"><svg xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                    <path
-                                        d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z">
-                                    </path>
-                                </svg></svg></button></li>
+        <nav class="navbar bg-light">
+            <div class="container-fluid">
+                <img src="./unitycore.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>    
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.html">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="markets/index.html">Markets</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="staking/index.html">Stake</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="governance/index.html">Governance</a>
+                        </li>
+                        <ul class="nav nav-pills">
+                            <li class="nav-item">
+                                <button class="nav-link  dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    More...
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-dark">      
+                                    <li>
+                                        <a class="dropdown-item " href="https://scan.coredao.org/" target="_blank">
+                                            <img src="coredao.png" alt="" width="5%">Core Explorer
+                                        </a>
+                                        <a class="dropdown-item " href="https://scan.coredao.org/" target="_blank">
+                                            <img src="coredao.png" alt="" width="5%">Discord
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+       <!-- 
+                        <ul class="nav nav-pills">
+                            <li class="nav-item">
+                                <button class="nav-link  dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    More...
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-dark">      
+                                    <li>
+                                        <a class="dropdown-item " href="https://scan.coredao.org/" target="_blank">
+                                            <img src="coredao.png" alt="" width="25%">Core
+                                        </a>
+                                        <a class="dropdown-item " href="https://scan.coredao.org/" target="_blank">
+                                            <img src="coredao.png" alt="" width="25%">Github
+                                        </a>
+                                        <a class="dropdown-item " href="https://scan.coredao.org/" target="_blank">
+                                            <img src="coredao.png" alt="" width="25%">Whitepaper
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </ul>
             </div>
-                
+            
+            
             
             <div class="MuiBox-root css-i9gxme"></div>
-           <!--<button
+          <button
                 class="MuiButtonBase-root MuiButton-root MuiButton-gradient MuiButton-gradientPrimary MuiButton-sizeMedium MuiButton-gradientSizeMedium MuiButton-disableElevation MuiButton-root MuiButton-gradient MuiButton-gradientPrimary MuiButton-sizeMedium MuiButton-gradientSizeMedium MuiButton-disableElevation css-9fybxg"
                 tabindex="0" type="button" aria-label="wallet" id="wallet-button" aria-haspopup="true">Connect
                 wallet
-            </button>--> 
+            </button>
             <div class="MuiBox-root css-1me2gch">
                 <button
                     class="MuiButtonBase-root MuiButton-root MuiButton-surface MuiButton-surfacePrimary MuiButton-sizeMedium MuiButton-surfaceSizeMedium MuiButton-disableElevation MuiButton-root MuiButton-surface MuiButton-surfacePrimary MuiButton-sizeMedium MuiButton-surfaceSizeMedium MuiButton-disableElevation css-1x9sid4"
@@ -1956,7 +2002,7 @@
                         </svg></svg>
                 </button>
             </div>
-        </header>
+        </header>-->
         <main class="MuiBox-root css-b95f0i">
             <div class="MuiBox-root css-614h4q">
                 <div class="MuiContainer-root MuiContainer-maxWidthLg css-ycl373">
@@ -2010,6 +2056,21 @@
                                 </p>
                             </div>
                         </div>
+                       
+                    <!-- Search Bar starts here-->
+                          <div class="input-group" style="margin-top: 5%;">
+                            <input type="text" class="form-control" aria-label="Text input with segmented dropdown button" placeholder="Search assets">
+                            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="visually-hidden">Toggle Dropdown</span>
+                               
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                              <li><a class="dropdown-item" href="#">All assets</a></li>
+                              <li><hr class="dropdown-divider"></li>
+                              <li><a class="dropdown-item" href="#">Supply assets</a></li>
+                            </ul>
+                          </div>
+                    <!-- Search Bar ends here-->
                       <!-- <div class="MuiBox-root css-k7vncv"> 
                             <div class="MuiBox-root css-ltjh6b">
                                 <div class="MuiBox-root css-q6wgnv"><svg width="20" height="19" viewBox="0 0 20 19"
