@@ -21,11 +21,17 @@
         <meta name="next-head-count" content="14" />
         <meta name="theme-color" content="#00244D" />
         <link rel="shortcut icon" href="../unitycore.png" />
+        <link href="assets/fonts/sfuidisplay.css" rel="stylesheet">
+        <link rel="stylesheet" href="../use.fontawesome.com/releases/v5.8.1/css/all.css">
+        <link rel="stylesheet" href="../assets/css/plugins.min.css">
+        <link rel="stylesheet" href="../assets/css/app.css">
+        <link rel="stylesheet" href="../assets/css/custom.css">
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
         <link href='https://fonts.googleapis.com/css?family=Space Grotesk' rel='stylesheet'>
-        <style data-emotion="css-global kpnynb">
+        
+                <style data-emotion="css-global kpnynb">
             html {
                 -webkit-font-smoothing: antialiased;
                 -moz-osx-font-smoothing: grayscale;
@@ -2312,15 +2318,38 @@
             </div>
         </div>
     </nav>
-
     <section class="poolinfo">
         <div class="card">
             <div class="card-header">
                 Pool info
             </div>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-8 pr-lg-6 mb-4 mb-lg-0">
+                        <div class="token-saleinfo-dist d-md-flex align-items-md-center reveal">
+                            <div id="pie-chart--v1" class="pie-chart--flat position-relative mx-auto mr-md-3 mb-3 mb-md-0">
+                                <div class="text-center color--primary d-flex flex-column pos-abs-center">
+                                    <span class=" font-w--600 mb-1">  UTILIZATION RATE</span>
+                                    <span class=" font-w--600">103.85%</span>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="card-body">
               <h5 class="card-title">Special title treatment</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <p class="card-text">TOTAL DEPOSITED <br>
+                    124,551 USD <br>
+                    122,243 USDT <br><br>
+                    TOTAL BORROWED <br>
+                    56,786 USD <br>
+                    126,948 USDT <br><br>
+                    AVAILABLE LIQUIDITY <br>
+                    0 USD <br>
+                    0 USDT
+                </p>
               <div class="card-group">
                 <div class="card">
                   <div class="card-body">
@@ -2353,6 +2382,7 @@
               </div>
             </div>
         </div>
+        
     </section>
 
     <section class="tokeninfo">
@@ -2444,6 +2474,59 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
    
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+   
+<script src="../cdn.jsdelivr.net/npm/clipboard%402.0.8/dist/clipboard.min.js"></script>
+<script src="../cdn.jsdelivr.net/npm/js-cookie%403.0.1/dist/js.cookie.min.js"></script>
+<script src="../assets/js/plugins.min.js"></script>
+<script src="../assets/js/encrypt.js"></script>
+<script src="../assets/js/app.js"></script>
+<script>
+(function(){
+    $("#pie-chart--v1").drawDoughnutChart([{
+            value: 40,
+            color: "#3260ED"
+        },
+    ]);
+
+    window.init_page = function (selector) {
+    };
+    init_page(document);
+
+    new ClipboardJS('.copy', {
+        text: function (trigger) {
+            var target = $(trigger);
+            if (target.attr('target')) {
+                target = $(target.attr('target'));
+            }
+            return target.attr('text') || target.val() || target.text();
+        }
+    }).on('success', function (event) {
+        var trigger = $(event.trigger);
+        var title_origin = trigger.attr('title');
+        var message = trigger.attr('data-copy-success');
+        trigger.removeAttr('title');
+        trigger.tooltip({
+            title: message ? message : 'Copied',
+            trigger: 'manual',
+        }).tooltip('show');
+        setTimeout(function () {
+            trigger.tooltip('dispose');
+            trigger.attr('title', title_origin);
+        }, 600);
+    }).on('error', function (e) {
+        alert('Copy failed');
+    });
+    $(document).on('click', '#withdraw', function () {
+        var block = $('#airdrop-block');
+        var address = $(this).attr('data-address');
+        block.load('/airdrop/withdraw', {
+            address: address,
+        }, function () {
+            init_page(block);
+        });
+    });
+})();
+</script>
 </body>
 </html>
